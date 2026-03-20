@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Packages - Vendor Panel</title>
+  <link rel="stylesheet" href="vendor-packages.css">
+
+  <script type="module" src="vendor-packages.js"></script>
+</head>
+<body>
+<button class="back-btn" onclick="goBack()">← Back</button>
+
+<h2>My Packages</h2>
+
+<button onclick="openAddModal()">+ Add New Package</button>
+
+<div id="packagesContainer"></div>
+
+<!-- MODAL -->
+<div id="packageModal" class="modal">
+  <div class="modal-box">
+
+    <h3 id="modalTitle">Add Package</h3>
+
+    <input type="file" id="pkgCoverImage">
+
+    <input id="pkgName" placeholder="Package Name">
+    <select id="pkgNameFont">
+      <option>Poppins</option>
+      <option>Montserrat</option>
+    </select>
+
+    <input id="pkgTitle" placeholder="Package Title">
+    <select id="pkgTitleFont">
+      <option>Poppins</option>
+      <option>Montserrat</option>
+    </select>
+
+    <textarea id="pkgDesc" placeholder="Description"></textarea>
+    <textarea id="pkgShortDesc" placeholder="Short Description"></textarea>
+
+    <input id="pkgPrice" type="number" placeholder="Price">
+    <input id="pkgCutPrice" type="number" placeholder="Cut Price">
+
+    <input id="pkgBadgeText" placeholder="Badge Text">
+    <input id="pkgBadgeColor" type="color">
+    <select id="pkgBadgeFont">
+      <option>Montserrat</option>
+      <option>Poppins</option>
+    </select>
+
+    <select id="pkgStatus">
+      <option value="active">Active</option>
+      <option value="inactive">Inactive</option>
+    </select>
+
+    <div class="modal-actions">
+      <button onclick="savePackage()">Save</button>
+      <button onclick="closeModal()">Cancel</button>
+    </div>
+
+  </div>
+</div>
+<script>
+  function goBack(){
+    window.history.back();
+  }
+</script>
+<script src="offline.js"></script>
+</body>
+</html>

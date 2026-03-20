@@ -1,0 +1,123 @@
+:root{
+  --gold:#d4af37;
+  --gold-dark:#b8962e;
+  --dark:#0f172a;
+  --light:#ffffff;
+  --gray:#94a3b8;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
+    url("hero-banner.jpg") center/cover no-repeat;
+}
+
+/* ================= LOGIN CARD ================= */
+
+.login-container{
+  width:100%;
+  max-width:380px;
+  padding:40px 35px;
+  border-radius:20px;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(18px);
+  box-shadow:0 25px 60px rgba(0,0,0,.4);
+  text-align:center;
+  color:#fff;
+  animation:fadeIn .6s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+.login-container h2{
+  margin-bottom:25px;
+  font-weight:600;
+  letter-spacing:.5px;
+}
+
+.login-container h2::after{
+  content:"";
+  display:block;
+  width:50px;
+  height:3px;
+  background:var(--gold);
+  margin:12px auto 0;
+  border-radius:5px;
+}
+
+/* ================= INPUT ================= */
+
+.login-container input{
+  width:100%;
+  padding:13px 15px;
+  margin-bottom:16px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.12);
+  color:#fff;
+  font-size:14px;
+  outline:none;
+  transition:.3s ease;
+}
+
+.login-container input::placeholder{
+  color:#d1d5db;
+}
+
+.login-container input:focus{
+  border-color:var(--gold);
+  background:rgba(255,255,255,.18);
+}
+
+/* ================= BUTTON ================= */
+
+.login-container button{
+  width:100%;
+  padding:13px;
+  border-radius:14px;
+  border:none;
+  font-weight:600;
+  font-size:14px;
+  cursor:pointer;
+  background:linear-gradient(135deg,var(--gold),var(--gold-dark));
+  color:#000;
+  transition:.35s ease;
+  box-shadow:0 10px 30px rgba(212,175,55,.35);
+}
+
+.login-container button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 18px 45px rgba(212,175,55,.55);
+}
+
+/* ================= MESSAGE ================= */
+
+#loginMessage{
+  margin-top:18px;
+  font-size:14px;
+  font-weight:500;
+  color:#f87171;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:480px){
+  .login-container{
+    margin:0 15px;
+    padding:30px 22px;
+  }
+}
