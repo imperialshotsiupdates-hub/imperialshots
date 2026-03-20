@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vendor Profile - Imperial Shots</title>
+  <link rel="stylesheet" href="vendor-profile.css">
+  <script type="module" src="vendor-profile.js"></script>
+</head>
+<body>
+
+<div class="profile-container">
+
+  <div class="profile-header">
+    <button class="back-btn" onclick="goBack()">← Back</button>
+    <h2>Vendor Profile</h2>
+  </div>
+
+  <div id="profileCard" class="profile-card">
+    Loading profile...
+  </div>
+
+</div>
+
+<script>
+  function goBack(){
+    window.history.back();
+  }
+</script>
+<script src="offline.js"></script>
+</body>
+</html>

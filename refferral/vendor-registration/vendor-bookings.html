@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Bookings - Vendor Panel</title>
+  <link rel="stylesheet" href="vendor-bookings.css">
+
+  <script type="module" src="vendor-bookings.js"></script>
+</head>
+<body>
+<button class="back-btn" onclick="goBack()">← Back</button>
+
+<h2>My Bookings</h2>
+
+<input id="bookingSearch" placeholder="Search booking...">
+
+<table>
+  <thead>
+    <tr>
+      <th>Booking ID</th>
+      <th>Client</th>
+      <th>Phone</th>
+      <th>Event Date</th>
+      <th>Package</th>
+      <th>Total</th>
+      <th>Paid</th>
+      <th>Remaining</th>
+      <th>Status</th>
+      <th>View</th>
+    </tr>
+  </thead>
+  <tbody id="bookingTable"></tbody>
+</table>
+
+<!-- DETAILS -->
+<div id="detailBox"></div>
+<script>
+  function goBack(){
+    window.history.back();
+  }
+</script>
+<script src="offline.js"></script>
+</body>
+</html>

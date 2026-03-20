@@ -1,0 +1,327 @@
+:root{
+  --gold:#d4af37;
+  --gold-dark:#b8962e;
+  --dark:#0f172a;
+  --dark-2:#1e293b;
+  --border:#334155;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+  --success:#22c55e;
+  --warning:#facc15;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:linear-gradient(180deg,#020617,#0f172a);
+  font-family:'Poppins',sans-serif;
+  color:var(--text);
+  padding:30px;
+}
+
+/* ================= SEARCH ================= */
+
+#bookingSearch{
+  width:320px;
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#020617;
+  color:#fff;
+  margin-bottom:22px;
+  outline:none;
+}
+
+#bookingSearch::placeholder{
+  color:var(--muted);
+}
+
+#bookingSearch:focus{
+  border-color:var(--gold);
+}
+
+/* ================= TABLE ================= */
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:var(--dark-2);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 20px 45px rgba(0,0,0,.4);
+}
+
+thead{
+  background:#020617;
+}
+
+th{
+  padding:14px;
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.6px;
+  color:var(--muted);
+  text-align:left;
+}
+
+td{
+  padding:14px;
+  border-bottom:1px solid var(--border);
+  font-size:14px;
+}
+
+tr.data-row{
+  transition:.3s ease;
+}
+
+tr.data-row:hover{
+  background:#020617;
+  cursor:pointer;
+}
+
+/* ================= STATUS ================= */
+
+.status-paid{
+  color:var(--success);
+  font-weight:600;
+}
+
+.status-pending{
+  color:var(--warning);
+  font-weight:600;
+}
+
+/* ================= VIEW BUTTON ================= */
+
+.view-btn{
+  padding:7px 14px;
+  border-radius:10px;
+  border:none;
+  font-size:13px;
+  font-weight:500;
+  cursor:pointer;
+  background:linear-gradient(135deg,var(--gold),var(--gold-dark));
+  color:#000;
+  transition:.3s ease;
+}
+
+.view-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(212,175,55,.45);
+}
+
+/* ================= DETAILS BOX ================= */
+
+#detailBox{
+  margin-top:30px;
+  background:linear-gradient(145deg,#020617,#1e293b);
+  padding:28px;
+  border-radius:20px;
+  box-shadow:0 30px 60px rgba(0,0,0,.5);
+  display:none;
+  animation:fadeUp .4s ease;
+}
+
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:none;}
+}
+
+#detailBox h3{
+  margin-bottom:18px;
+  font-weight:600;
+  border-bottom:1px solid rgba(255,255,255,.1);
+  padding-bottom:10px;
+}
+
+#detailBox h4{
+  margin:18px 0 10px;
+  font-size:15px;
+  color:var(--gold);
+}
+
+#detailBox p{
+  margin-bottom:8px;
+  font-size:14px;
+  color:#e5e7eb;
+}
+
+#detailBox b{
+  color:#fff;
+}
+
+#detailBox ul{
+  list-style:none;
+  margin-top:8px;
+}
+
+#detailBox ul li{
+  padding:8px 0;
+  font-size:13px;
+  border-bottom:1px dashed rgba(255,255,255,.15);
+}
+
+#detailBox a{
+  color:var(--gold);
+  text-decoration:none;
+}
+
+#detailBox a:hover{
+  text-decoration:underline;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+  body{
+    padding:18px;
+  }
+
+  table{
+    font-size:12px;
+  }
+
+  th,td{
+    padding:10px;
+  }
+
+  #bookingSearch{
+    width:100%;
+  }
+}
+.back-btn{
+  padding:10px 18px;
+  border-radius:12px;
+  border:none;
+  cursor:pointer;
+  font-weight:600;
+  font-size:14px;
+  margin-bottom:20px;
+  background:linear-gradient(135deg,#d4af37,#b8962e);
+  color:#000;
+  box-shadow:0 10px 25px rgba(212,175,55,.35);
+  transition:.3s ease;
+}
+
+.back-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 45px rgba(212,175,55,.55);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= ADVANCED MOBILE RESPONSIVE ================= */
+
+/* Tablet & Small Screens */
+@media (max-width:768px){
+
+  body{
+    padding:15px;
+  }
+
+  #bookingSearch{
+    width:100%;
+    margin-bottom:18px;
+  }
+
+  table{
+    display:block;
+    overflow-x:auto;
+    white-space:nowrap;
+    border-radius:14px;
+  }
+
+  th, td{
+    padding:10px;
+    font-size:12px;
+  }
+
+  .view-btn{
+    padding:6px 12px;
+    font-size:12px;
+  }
+
+  #detailBox{
+    padding:20px;
+  }
+}
+
+
+/* Small Phones – Convert Table to Card Layout */
+@media (max-width:520px){
+
+  table, thead, tbody, th, td, tr{
+    display:block;
+    width:100%;
+  }
+
+  thead{
+    display:none;
+  }
+
+  tr.data-row{
+    background:#0f172a;
+    margin-bottom:14px;
+    border-radius:14px;
+    padding:14px;
+    box-shadow:0 15px 35px rgba(0,0,0,.4);
+  }
+
+  td{
+    border:none;
+    padding:6px 0;
+    font-size:13px;
+    display:flex;
+    justify-content:space-between;
+  }
+
+  td::before{
+    content:attr(data-label);
+    font-weight:600;
+    color:var(--muted);
+  }
+
+  .view-btn{
+    width:100%;
+    margin-top:8px;
+  }
+
+  #detailBox{
+    padding:18px;
+    border-radius:16px;
+  }
+
+  #detailBox h3{
+    font-size:16px;
+  }
+
+  #detailBox h4{
+    font-size:14px;
+  }
+
+  #detailBox p,
+  #detailBox ul li{
+    font-size:13px;
+  }
+
+  .back-btn{
+    width:100%;
+    text-align:center;
+  }
+}

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>ImperialShots Referral Dashboard</title>
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+
+font-family:Poppins,Arial;
+
+margin:0;
+
+background:linear-gradient(135deg,#141e30,#243b55);
+
+color:white;
+
+}
+
+/* CONTAINER */
+
+.container{
+
+max-width:1100px;
+
+margin:auto;
+
+padding:25px;
+
+}
+
+/* HEADER */
+
+.header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:30px;
+
+}
+
+.header h2{
+
+margin:0;
+
+}
+
+.headerRight{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+}
+
+.profile{
+
+font-size:20px;
+
+cursor:pointer;
+
+background:#ffffff20;
+
+padding:10px;
+
+border-radius:50%;
+
+}
+
+.logout{
+
+padding:8px 15px;
+
+border:none;
+
+background:#ff4d4d;
+
+color:white;
+
+border-radius:6px;
+
+cursor:pointer;
+
+}
+
+/* REFERRAL BOX */
+
+.refbox{
+
+background:rgba(255,255,255,0.08);
+
+backdrop-filter:blur(10px);
+
+padding:20px;
+
+border-radius:10px;
+
+margin-bottom:25px;
+
+text-align:center;
+
+}
+
+.refbox h2{
+
+margin:10px 0;
+
+letter-spacing:2px;
+
+}
+
+.copyBtn{
+
+margin-top:10px;
+
+padding:8px 18px;
+
+border:none;
+
+background:#00c6ff;
+
+color:black;
+
+border-radius:6px;
+
+cursor:pointer;
+
+font-weight:bold;
+
+}
+
+/* CARDS */
+
+.cards{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:15px;
+
+margin-bottom:30px;
+
+}
+
+.card{
+
+flex:1;
+
+min-width:200px;
+
+padding:25px;
+
+border-radius:10px;
+
+text-align:center;
+
+font-size:18px;
+
+font-weight:bold;
+
+transition:0.3s;
+
+}
+
+.card h2{
+
+margin-top:10px;
+
+font-size:28px;
+
+}
+
+.card:hover{
+
+transform:translateY(-5px);
+
+}
+
+.total{
+
+background:#007bff;
+
+}
+
+.approved{
+
+background:#28a745;
+
+}
+
+.rejected{
+
+background:#dc3545;
+
+}
+
+/* TABLE */
+
+.tableBox{
+
+background:rgba(255,255,255,0.08);
+
+backdrop-filter:blur(10px);
+
+border-radius:10px;
+
+overflow:hidden;
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+thead{
+
+background:#00000040;
+
+}
+
+th,td{
+
+padding:14px;
+
+text-align:left;
+
+}
+
+tbody tr{
+
+border-bottom:1px solid rgba(255,255,255,0.1);
+
+}
+
+tbody tr:hover{
+
+background:#ffffff10;
+
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.cards{
+
+flex-direction:column;
+
+}
+
+}
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width:768px){
+
+.container{
+padding:15px;
+}
+
+/* HEADER */
+
+.header{
+flex-direction:column;
+align-items:flex-start;
+gap:15px;
+}
+
+.headerRight{
+width:100%;
+display:flex;
+justify-content:space-between;
+}
+
+/* REFERRAL BOX */
+
+.refbox{
+padding:18px;
+}
+
+.refbox h2{
+font-size:22px;
+}
+
+/* CARDS */
+
+.cards{
+flex-direction:column;
+}
+
+.card{
+width:100%;
+font-size:16px;
+padding:20px;
+}
+
+.card h2{
+font-size:24px;
+}
+
+/* TABLE */
+
+.tableBox{
+overflow-x:auto;
+}
+
+table{
+min-width:500px;
+}
+
+/* BUTTONS */
+
+.copyBtn{
+width:100%;
+padding:10px;
+font-size:16px;
+}
+
+.logout{
+padding:10px 18px;
+font-size:14px;
+}
+
+/* PROFILE */
+
+.profile{
+font-size:18px;
+padding:8px;
+}
+
+}
+/* FOOTER */
+
+.footer{
+margin-top:40px;
+padding:20px;
+text-align:center;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+border-radius:10px;
+font-size:14px;
+}
+
+.footer a{
+color:#00c6ff;
+text-decoration:none;
+font-weight:bold;
+}
+
+.footer a:hover{
+text-decoration:underline;
+}
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+
+
+<body>
+
+<div class="container">
+
+
+<!-- HEADER -->
+
+<div class="header">
+
+<h2>Referral Dashboard</h2>
+
+<div class="headerRight">
+
+<div class="profile" onclick="openProfile()">
+<i class="fa-solid fa-user"></i>
+</div>
+
+<button class="logout" onclick="logout()">Logout</button>
+
+</div>
+
+</div>
+
+
+
+<!-- REFERRAL CODE -->
+
+<div class="refbox">
+
+<div>Your Referral Code</div>
+
+<h2 id="refCode">----</h2>
+
+<button class="copyBtn" onclick="copyReferral()">Copy Code</button>
+
+</div>
+
+
+
+<!-- STATS -->
+
+<div class="cards">
+
+<div class="card total">
+
+Total Vendors
+
+<h2 id="total">0</h2>
+
+</div>
+
+
+<div class="card approved">
+
+Approved
+
+<h2 id="approved">0</h2>
+
+</div>
+
+
+<div class="card rejected">
+
+Rejected
+
+<h2 id="rejected">0</h2>
+
+</div>
+
+</div>
+
+
+
+<!-- TABLE -->
+
+
+
+</div>
+
+
+<script src="dashboard.js"></script>
+<!-- FOOTER -->
+
+<div class="footer">
+
+<p>
+<a href="t&c.html">Terms & Conditions</a>
+</p>
+
+<p>
+<a href="/vendor-registration/index.html"> Vendors Registration</a>
+<div class="copyright">
+
+© 2026 Impraj. All Rights Reserved.
+
+</div>
+
+</div>
+</body>
+
+</html>

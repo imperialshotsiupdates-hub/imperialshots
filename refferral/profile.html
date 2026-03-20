@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>User Profile</title>
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+
+margin:0;
+font-family:Poppins,Arial;
+
+background:linear-gradient(135deg,#141e30,#243b55);
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+height:100vh;
+
+color:white;
+
+}
+
+/* CARD */
+
+.card{
+
+width:420px;
+
+background:rgba(255,255,255,0.08);
+
+backdrop-filter:blur(15px);
+
+border-radius:12px;
+
+padding:35px;
+
+box-shadow:0 15px 40px rgba(0,0,0,0.5);
+
+}
+
+/* HEADER */
+
+.header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:25px;
+
+}
+
+.back{
+
+cursor:pointer;
+
+font-size:20px;
+
+background:#ffffff20;
+
+padding:8px 12px;
+
+border-radius:6px;
+
+}
+
+.profileIcon{
+
+font-size:45px;
+
+text-align:center;
+
+margin-bottom:10px;
+
+}
+
+h2{
+
+text-align:center;
+
+margin-top:0;
+
+}
+
+/* INFO */
+
+.info{
+
+background:#ffffff10;
+
+padding:10px;
+
+margin:10px 0;
+
+border-radius:6px;
+
+}
+
+.label{
+
+font-weight:bold;
+
+color:#00c6ff;
+
+}
+
+/* BUTTONS */
+
+button{
+
+width:100%;
+
+padding:12px;
+
+margin-top:15px;
+
+border:none;
+
+border-radius:6px;
+
+font-size:14px;
+
+cursor:pointer;
+
+}
+
+.copy{
+
+background:#00c6ff;
+
+color:black;
+
+font-weight:bold;
+
+}
+
+.logout{
+
+background:#ff4d4d;
+
+color:white;
+
+}
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+
+
+<body>
+
+<div class="card">
+
+<div class="header">
+
+<div class="back" onclick="goBack()">⬅</div>
+
+<div></div>
+
+</div>
+
+
+<div class="profile" onclick="openProfile()">
+<i class="fa-solid fa-user"></i>
+</div>
+
+<h2>User Profile</h2>
+
+
+<div class="info">
+<span class="label">Name:</span>
+<span id="name"></span>
+</div>
+
+<div class="info">
+<span class="label">Phone:</span>
+<span id="phone"></span>
+</div>
+
+<div class="info">
+<span class="label">Email:</span>
+<span id="email"></span>
+</div>
+
+<div class="info">
+<span class="label">User ID:</span>
+<span id="uid"></span>
+</div>
+
+<div class="info">
+<span class="label">Password:</span>
+<span id="pass"></span>
+</div>
+
+<div class="info">
+<span class="label">Referral Code:</span>
+<span id="ref"></span>
+</div>
+
+<button class="copy" onclick="copyRef()">Copy Referral Code</button>
+
+<button class="logout" onclick="logout()">Logout</button>
+
+</div>
+
+
+<script>
+
+// FIREBASE CONFIG
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyDmmcRlCs6K0PzxnFkuA0qv5U5K3V6x8QQ",
+authDomain: "vendors-d084b.firebaseapp.com",
+databaseURL: "https://vendors-d084b-default-rtdb.asia-southeast1.firebasedatabase.app",
+projectId: "vendors-d084b"
+
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.database();
+
+
+// GET USER
+
+let userId = localStorage.getItem("user");
+
+if(!userId){
+
+window.location="login.html";
+
+}
+
+db.ref("users/"+userId).once("value").then(snap=>{
+
+let data=snap.val();
+
+document.getElementById("name").innerText=data.name;
+document.getElementById("phone").innerText=data.phone;
+document.getElementById("email").innerText=data.email;
+document.getElementById("uid").innerText=userId;
+document.getElementById("pass").innerText=data.password;
+document.getElementById("ref").innerText=data.referral;
+
+});
+
+
+// BACK BUTTON
+
+function goBack(){
+
+history.back();
+
+}
+
+
+// COPY REFERRAL
+
+function copyRef(){
+
+let code=document.getElementById("ref").innerText;
+
+navigator.clipboard.writeText(code);
+
+alert("Referral Code Copied!");
+
+}
+
+
+// LOGOUT
+
+function logout(){
+
+if(confirm("Logout from account?")){
+
+localStorage.removeItem("user");
+
+window.location="login.html";
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>

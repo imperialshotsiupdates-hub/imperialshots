@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ImperialShots Referral Terms</title>
+
+<style>
+
+body{
+font-family:Poppins,Arial;
+margin:0;
+background:linear-gradient(135deg,#141e30,#243b55);
+color:white;
+line-height:1.7;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:30px;
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+}
+
+.langSwitch{
+text-align:center;
+margin-bottom:20px;
+}
+
+.langSwitch button{
+padding:8px 16px;
+margin:5px;
+border:none;
+border-radius:6px;
+background:#00c6ff;
+color:black;
+cursor:pointer;
+font-weight:bold;
+}
+
+.section{
+margin-bottom:20px;
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:8px;
+}
+
+.backBtn{
+display:inline-block;
+margin-top:20px;
+padding:10px 20px;
+background:#00c6ff;
+color:black;
+text-decoration:none;
+border-radius:6px;
+font-weight:bold;
+}
+.footer{
+margin-top:40px;
+padding:15px;
+text-align:center;
+background:rgba(0,0,0,0.3);
+font-size:14px;
+}
+
+.footerLinks a{
+color:#00c6ff;
+text-decoration:none;
+font-weight:bold;
+}
+
+.footerLinks a:hover{
+text-decoration:underline;
+}
+
+.copyright{
+margin-top:5px;
+opacity:0.7;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 id="title">ImperialShots Referral Program Terms & Conditions</h1>
+
+<div class="langSwitch">
+<button onclick="setLang('en')">English</button>
+<button onclick="setLang('hi')">हिंदी</button>
+</div>
+
+<div id="content"></div>
+
+<a href="javascript:history.back()" class="backBtn">Go Back</a>
+
+</div>
+
+<script>
+
+const contentData = {
+
+en:`
+
+<div class="section">
+<h3>1. Referral Program Overview</h3>
+<p>
+The ImperialShots Referral Program allows users to invite new vendors using their referral code.
+Referral rewards are given only when the invited vendors are successfully approved by the admin team.
+</p>
+</div>
+
+<div class="section">
+<h3>2. Minimum Approval Requirement</h3>
+<p>
+Referral rewards will only be eligible after a minimum of <b>10 vendors</b> registered through your referral code
+are successfully approved. Pending or rejected vendors will not be counted.
+</p>
+</div>
+
+<div class="section">
+<h3>3. Fake Registrations</h3>
+<p>
+Creating fake vendors, duplicate accounts, or fraudulent registrations is strictly prohibited.
+If such activity is detected, the referral account may be permanently blocked and rewards cancelled.
+</p>
+</div>
+
+<div class="section">
+<h3>4. Vendor Verification</h3>
+<p>
+All vendors go through a manual verification process. Only verified vendors that meet platform
+requirements will be approved.
+</p>
+</div>
+
+<div class="section">
+<h3>5. Reward Eligibility</h3>
+<p>
+Rewards will be provided only after verification of approved vendors. Rejected or incomplete
+registrations will not qualify.
+</p>
+</div>
+
+<div class="section">
+<h3>6. Platform Rights</h3>
+<p>
+ImperialShots reserves the right to modify or cancel the referral program at any time
+if misuse or abuse of the system is detected.
+</p>
+</div>
+
+`,
+
+hi:`
+
+<div class="section">
+<h3>1. रेफरल प्रोग्राम का परिचय</h3>
+<p>
+ImperialShots का रेफरल प्रोग्राम उपयोगकर्ताओं को अपने रेफरल कोड के माध्यम से नए वेंडर्स को आमंत्रित करने की अनुमति देता है।
+रेफरल रिवॉर्ड तभी दिया जाएगा जब आमंत्रित वेंडर को एडमिन टीम द्वारा सफलतापूर्वक अप्रूव किया जाएगा।
+</p>
+</div>
+
+<div class="section">
+<h3>2. न्यूनतम अप्रूवल आवश्यकता</h3>
+<p>
+रेफरल रिवॉर्ड प्राप्त करने के लिए आपके रेफरल कोड से कम से कम <b>10 वेंडर्स का अप्रूव होना आवश्यक है</b>।
+Pending या Rejected वेंडर्स को इसमें शामिल नहीं किया जाएगा।
+</p>
+</div>
+
+<div class="section">
+<h3>3. फेक रजिस्ट्रेशन</h3>
+<p>
+फर्जी वेंडर बनाना, डुप्लीकेट अकाउंट बनाना या गलत जानकारी के साथ रजिस्ट्रेशन करना सख्त मना है।
+यदि ऐसी गतिविधि पाई जाती है तो आपका रेफरल अकाउंट स्थायी रूप से बंद किया जा सकता है और रिवॉर्ड रद्द कर दिया जाएगा।
+</p>
+</div>
+
+<div class="section">
+<h3>4. वेंडर वेरिफिकेशन</h3>
+<p>
+सभी वेंडर्स का मैन्युअल वेरिफिकेशन किया जाता है।
+सिर्फ वही वेंडर्स अप्रूव होंगे जो प्लेटफॉर्म की आवश्यकताओं को पूरा करते हैं।
+</p>
+</div>
+
+<div class="section">
+<h3>5. रिवॉर्ड पात्रता</h3>
+<p>
+रिवॉर्ड तभी दिया जाएगा जब आवश्यक संख्या में वेंडर्स अप्रूव हो जाएँ।
+Rejected या अधूरे रजिस्ट्रेशन के लिए कोई रिवॉर्ड नहीं मिलेगा।
+</p>
+</div>
+
+<div class="section">
+<h3>6. प्लेटफॉर्म अधिकार</h3>
+<p>
+ImperialShots को यह अधिकार है कि यदि सिस्टम का दुरुपयोग पाया जाता है तो वह किसी भी समय
+रेफरल प्रोग्राम में बदलाव या उसे समाप्त कर सकता है।
+</p>
+</div>
+
+`
+
+};
+
+function setLang(lang){
+document.getElementById("content").innerHTML = contentData[lang];
+}
+
+setLang("en");
+
+</script>
+<footer class="footer">
+
+<div class="footerLinks">
+
+<a href="t&c.html">Terms & Conditions</a>
+
+</div>
+
+<div class="copyright">
+
+© 2026 Impraj. All Rights Reserved.
+
+</div>
+
+</footer>
+</body>
+</html>
