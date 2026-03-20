@@ -1,0 +1,465 @@
+/* ================= MOBILE APP CSS FOR PACKAGES ================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#ffffff;
+color:#111;
+font-size:14px;
+line-height:1.5;
+padding-top:80px;
+padding-bottom:70px;
+overflow-x:hidden;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+button,input,select,textarea{
+font-family:inherit;
+}
+
+/* ================= HEADER ================= */
+
+.app-header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:70px;
+background:#6b6762;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 12px;
+z-index:999;
+}
+
+.app-header .logo img{
+height:48px;
+object-fit:contain;
+}
+
+.app-header .notification{
+font-size:22px;
+cursor:pointer;
+color:#333;
+}
+
+/* ================= SEARCH BAR ================= */
+
+.filter-bar{
+width:100%;
+padding:8px 12px;
+background:#6b6762;
+display:flex;
+justify-content:center;
+}
+
+.search-box{
+display:flex;
+align-items:center;
+width:100%;
+max-width:95%;
+background:#f1f1f1;
+border-radius:12px;
+overflow:hidden;
+}
+
+/* INPUT */
+
+.search-box input{
+flex:1;
+min-width:0;
+padding:10px 12px;
+border:none;
+background:transparent;
+font-size:13px;
+outline:none;
+}
+
+/* CITY DROPDOWN FIX */
+
+.search-box select{
+min-width:80px;
+max-width:110px;
+border:none;
+border-left:1px solid #ddd;
+background:transparent;
+font-size:12px;
+padding:10px 6px;
+outline:none;
+flex-shrink:0;
+}
+
+/* ================= PACKAGES GRID ================= */
+
+.packages-grid{
+display:flex;
+flex-direction:column;
+gap:15px;
+padding:15px;
+}
+
+/* ================= PACKAGE CARD ================= */
+
+.package-card{
+background:#f9f9f9;
+border-radius:14px;
+padding:12px;
+box-shadow:0 4px 10px rgba(0,0,0,0.05);
+text-align:center;
+}
+
+.package-card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:12px;
+margin-bottom:10px;
+}
+
+.package-card h4{
+margin:6px 0;
+font-size:16px;
+font-weight:600;
+}
+
+.package-card p{
+font-size:13px;
+color:#555;
+margin-bottom:10px;
+}
+
+.package-card .price{
+font-size:15px;
+font-weight:600;
+color:#d4af37;
+margin-bottom:10px;
+}
+
+.package-card .btn-book{
+width:100%;
+background:#d4af37;
+color:#000;
+border:none;
+border-radius:10px;
+padding:12px;
+font-weight:600;
+cursor:pointer;
+transition:0.3s ease;
+}
+
+.package-card .btn-book:hover{
+background:#c49b2c;
+}
+
+/* ================= BOOKING FORM ================= */
+
+.booking-form{
+background:#fff;
+padding:15px;
+border-radius:14px;
+margin:15px;
+box-shadow:0 3px 10px rgba(0,0,0,0.05);
+}
+
+.booking-form h3{
+margin-bottom:12px;
+font-size:16px;
+text-align:center;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea{
+width:100%;
+padding:11px;
+margin-bottom:10px;
+border-radius:10px;
+border:1px solid #ddd;
+font-size:14px;
+}
+
+.booking-form textarea{
+min-height:80px;
+resize:vertical;
+}
+
+.booking-form button{
+width:100%;
+padding:13px;
+border-radius:10px;
+border:none;
+background:#d4af37;
+color:#000;
+font-weight:600;
+cursor:pointer;
+}
+
+/* ================= BOTTOM NAV ================= */
+
+.app-bottom{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+height:60px;
+background:#f8f6f1;
+display:flex;
+justify-content:space-around;
+align-items:center;
+box-shadow:0 -2px 6px rgba(0,0,0,0.08);
+z-index:999;
+}
+
+.app-bottom a{
+text-align:center;
+font-size:12px;
+color:#111;
+}
+
+.app-bottom a i{
+display:block;
+font-size:20px;
+margin-bottom:2px;
+}
+
+.app-bottom a.active{
+color:#d4af37;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.6);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000;
+padding:15px;
+}
+
+.modal.show{
+display:flex;
+}
+
+.modal-box{
+background:#fff;
+width:100%;
+max-width:420px;
+max-height:90vh;
+border-radius:14px;
+padding:15px;
+overflow-y:auto;
+position:relative;
+animation:fadeIn 0.3s ease;
+}
+
+.close{
+position:absolute;
+right:15px;
+top:10px;
+font-size:22px;
+cursor:pointer;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:scale(0.95);}
+to{opacity:1;transform:scale(1);}
+}
+
+/* ================= MOBILE FIX ================= */
+
+@media (max-width:768px){
+
+#packagesContainer{
+display:grid;
+grid-template-columns:1fr;
+gap:20px;
+padding:20px 14px 100px;
+}
+
+.package-card{
+width:100%;
+margin:0 auto;
+border-radius:16px;
+}
+
+.pkg-image-wrapper{
+height:200px;
+}
+
+.pkg-content{
+padding:20px;
+}
+
+.pkg-name{
+font-size:20px;
+}
+
+.pkg-main-price{
+font-size:24px;
+}
+
+}
+
+/* Hide Desktop Elements */
+
+@media (max-width:768px){
+
+.contact,
+.site-footer,
+.v-sidebar{
+display:none !important;
+}
+
+}
+
+/* Hide Bottom Nav Desktop */
+
+@media (min-width:769px){
+
+.app-bottom{
+display:none !important;
+}
+
+body{
+padding-bottom:0;
+}
+
+}
+
+/* ================= SMALL MOBILE FIX ================= */
+
+@media (max-width:400px){
+
+.search-box{
+max-width:100%;
+}
+
+.search-box select{
+min-width:70px;
+font-size:11px;
+padding:8px 4px;
+}
+
+.search-box input{
+font-size:12px;
+}
+
+}
+
+/* ================= Loader ================= */
+
+.loader{
+width:50px;
+height:50px;
+border:5px solid #eee;
+border-top:5px solid #111;
+border-radius:50%;
+animation:spin 1s linear infinite;
+margin:80px auto;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+
+/* DARK THEME */
+
+body[data-theme="dark"]{
+background:#111;
+color:#fff;
+}
+
+body[data-theme="dark"] button,
+body[data-theme="dark"] .btn{
+background:#333;
+color:#fff;
+}
+
+body[data-theme="dark"] button:hover{
+background:#555;
+}
+
+
+/* PINK THEME */
+
+body[data-theme="pink"]{
+background:#fff0f6;
+}
+
+body[data-theme="pink"] button,
+body[data-theme="pink"] .btn{
+background:#ff2d8d;
+color:#fff;
+}
+
+body[data-theme="pink"] button:hover{
+background:#e02178;
+}
+
+
+/* BLUE THEME */
+
+body[data-theme="blue"]{
+background:#f0f6ff;
+}
+
+body[data-theme="blue"] button,
+body[data-theme="blue"] .btn{
+background:#2979ff;
+color:#fff;
+}
+
+body[data-theme="blue"] button:hover{
+background:#1c5ed6;
+}
+
+
+/* ORANGE THEME */
+
+body[data-theme="orange"]{
+background:#fff6ef;
+}
+
+body[data-theme="orange"] button,
+body[data-theme="orange"] .btn{
+background:#ff7a00;
+color:#fff;
+}
+
+body[data-theme="orange"] button:hover{
+background:#e56d00;
+}
+
+
+/* YELLOW THEME */
+
+body[data-theme="yellow"]{
+background:#fffdf4;
+}
+
+body[data-theme="yellow"] button,
+body[data-theme="yellow"] .btn{
+background:#d4af37;
+color:#fff;
+}
+
+body[data-theme="yellow"] button:hover{
+background:#b9972d;
+}
+
+

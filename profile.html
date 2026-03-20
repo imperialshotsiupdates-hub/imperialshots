@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Profile | Imperial Shots</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="profile.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="profileapp.css" media="(max-width:768px)">
+<link rel="stylesheet" href="profileapp.css">
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+
+
+
+
+  <style>
+    .profile-wrapper { max-width:1100px; margin:30px auto; padding:20px; font-family:'Poppins',sans-serif; }
+    .profile-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:30px; }
+    .profile-header h1 { font-size:24px; }
+    #logoutBtn { padding:8px 20px; cursor:pointer; background:#d4af37; border:none; border-radius:8px; color:#000; font-weight:500; }
+    .profile-card { display:flex; gap:40px; background:#14141b; padding:30px; border-radius:20px; color:#fff; }
+    .profile-left { flex:1; text-align:center; }
+    .profile-left img { width:120px; height:120px; border-radius:50%; margin-bottom:15px; }
+    .profile-left h2 { font-size:18px; margin-bottom:5px; }
+    .profile-left span { font-size:14px; color:#bcbcbc; }
+    .profile-right { flex:2; }
+    .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:15px; margin-bottom:25px; }
+    .info-box label { font-size:12px; color:#bcbcbc; display:block; margin-bottom:5px; }
+    .info-box p { font-size:14px; font-weight:500; }
+    .profile-actions a { text-decoration:none; padding:10px 20px; border-radius:10px; font-weight:500; margin-right:15px; }
+    .gold-btn { background:#d4af37; color:#000; }
+    .dark-btn { background:#14141b; border:1px solid #bcbcbc; color:#bcbcbc; }
+    .quotes-section { margin-top:30px; }
+    .quotes-section h3 { margin-bottom:15px; }
+    .quote-card { background:#1a1a24; padding:15px; border-radius:15px; margin-bottom:15px; }
+    .quote-card p { margin:4px 0; font-size:14px; color:#bcbcbc; }
+    .quote-card .status { font-weight:500; text-transform:capitalize; }
+  </style>
+</head>
+
+<body>
+
+<div class="profile-wrapper">
+
+  <header class="profile-header">
+    <h1>Imperial Shots</h1>
+    <button id="logoutBtn">Logout</button>
+  </header>
+
+  <section class="profile-card">
+
+    <div class="profile-left">
+      <img src="assets/images/user.jpg" alt="User">
+      <h2 id="userEmail">Loading...</h2>
+      <span>Premium Client</span>
+    </div>
+
+    <div class="profile-right">
+
+      <h3>Account Details</h3>
+
+      <div class="info-grid">
+        <div class="info-box">
+          <label>User ID</label>
+          <p id="userId">---</p>
+        </div>
+
+        <div class="info-box">
+          <label>Account Role</label>
+          <p id="userRole">User</p>
+        </div>
+
+        <div class="info-box">
+          <label>Joined On</label>
+          <p id="createdAt">---</p>
+        </div>
+      </div>
+
+      <div class="profile-actions">
+        <a href="mybookings.html" class="gold-btn">My Bookings</a>
+        <a href="index.html" class="dark-btn">Go To Website</a>
+      </div>
+
+      <div class="quotes-section">
+        <h3>My Quotes / Enquiries</h3>
+        <div id="userQuotes">
+          <p>Loading your quotes...</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<script>
+// ================= FIREBASE CONFIG =================
+const firebaseConfig = {
+  apiKey: "AIzaSyAvfmCKZQGxWdNUyqySV5IPk8DiFU4F23U",
+  authDomain: "imperialshots-d468c.firebaseapp.com",
+  databaseURL: "https://imperialshots-d468c-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "imperialshots-d468c"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const auth = firebase.auth();
+const db = firebase.database();
+
+// ================= AUTH CHECK =================
+auth.onAuthStateChanged(user => {
+  if(!user){
+    window.location.href = "login.html";
+    return;
+  }
+
+  // Email
+  document.getElementById("userEmail").innerText = user.email;
+
+  // Generate IMP UserID (4 random digits)
+  const userId = "IMP" + Math.floor(1000 + Math.random()*9000);
+  document.getElementById("userId").innerText = userId;
+
+  // Joined date
+  const createdAt = new Date(user.metadata.creationTime).toLocaleDateString();
+  document.getElementById("createdAt").innerText = createdAt;
+
+  // Role (from Realtime DB)
+  db.ref("users/"+user.uid).get().then(snapshot=>{
+    if(snapshot.exists()){
+      document.getElementById("userRole").innerText = snapshot.val().role || "User";
+    }
+  });
+
+  // ================= USER QUOTES / ENQUIRIES =================
+  const userQuotesDiv = document.getElementById("userQuotes");
+  const quotesRef = db.ref("quotes"); // assuming quotes stored here
+  quotesRef.on("value", snapshot => {
+    userQuotesDiv.innerHTML = ""; // clear
+    const data = snapshot.val();
+    if(!data){
+      userQuotesDiv.innerHTML = "<p>No quotes found</p>";
+      return;
+    }
+    let found = false;
+    Object.values(data).forEach(q=>{
+      if(q.userId === user.uid){
+        found = true;
+        const card = document.createElement("div");
+        card.className = "quote-card";
+        card.innerHTML = `
+          <p><strong>Event Type:</strong> ${q.eventType || "N/A"}</p>
+          <p><strong>Event Date:</strong> ${q.eventDate || "N/A"}</p>
+          <p><strong>Package:</strong> ${q.package || "N/A"}</p>
+          <p><strong>Email:</strong> ${q.email || "N/A"}</p>
+          <p><strong>Message:</strong> ${q.message || "N/A"}</p>
+          <p class="status"><strong>Status:</strong> ${q.status || "Pending"}</p>
+        `;
+        userQuotesDiv.appendChild(card);
+      }
+    });
+    if(!found) userQuotesDiv.innerHTML = "<p>No quotes found</p>";
+  });
+
+});
+
+// ================= LOGOUT =================
+document.getElementById("logoutBtn").onclick = () => {
+  auth.signOut().then(()=>{
+    window.location.href = "login.html";
+  });
+};
+</script>
+<script src="bottom-nav.js"></script>
+<div class="app-bottom">
+  <a href="index.html" class="active">
+    <i class="fa fa-home"></i>Home
+  </a>
+  <a href="packages.html">
+    <i class="fa fa-box"></i>Plans
+  </a>
+  <a href="portfolio.html">
+    <i class="fa fa-film"></i>Work
+  </a>
+  <a href="more.html">
+    <i class="fa fa-ellipsis-h"></i>More
+  </a>
+</div>
+<script src="offline.js"></script>
+<script>
+
+let savedTheme=localStorage.getItem("theme")
+
+if(savedTheme){
+
+document.body.setAttribute("data-theme",savedTheme)
+
+}
+
+</script>
+<script src="site-settings.js"></script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</script>
+</body>
+</html>

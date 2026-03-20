@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQs | Imperial Shots</title>
+
+  <link rel="stylesheet" href="faqs.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Imperial Shots</h1>
+  <img src="original.png" alt="Imperial Shots Logo">
+</header>
+
+<div class="container">
+
+  <a href="index.html" class="back-link">← Back to Home</a>
+
+  <h2>Frequently Asked Questions</h2>
+  <p class="subtitle">
+    Clear answers about bookings, videography, delivery & services
+  </p>
+
+  <!-- SEARCH BAR -->
+  <input
+    type="text"
+    id="faqSearch"
+    placeholder="Search topics like booking, delivery, videography..."
+    onkeyup="searchFAQ()"
+  >
+
+  <div class="faq-list" id="faqList">
+
+    <!-- BOOKING -->
+    <div class="faq-item">
+      <h3>How do I book a shoot with Imperial Shots?</h3>
+      <p>
+        You can book directly from our website or after
+        <a href="login.html">logging into your account</a>.
+        Once logged in, submit your booking details.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Where can I view my bookings?</h3>
+      <p>
+        All your bookings are available on the
+        <a href="mybookings.html">My Bookings</a> page after login.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can I cancel or reschedule a booking?</h3>
+      <p>
+        Yes, only <strong>Pending</strong> bookings can be canceled or rescheduled
+        from the <a href="mybookings.html">My Bookings</a> section.
+      </p>
+    </div>
+
+    <!-- VIDEOGRAPHY -->
+    <div class="faq-item">
+      <h3>What videography services do you provide?</h3>
+      <p>
+        We provide Wedding Films, Pre-Wedding Shoots,
+        Reels & Short Films, and Commercial Videography.
+        Visit the <a href="index.html">Home Page</a> for full details.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Do you provide cinematic wedding films?</h3>
+      <p>
+        Yes, cinematic storytelling is our specialty.
+        Every wedding film is edited professionally with music and color grading.
+      </p>
+    </div>
+
+    <!-- DELIVERY -->
+    <div class="faq-item">
+      <h3>How long does it take to deliver photos and videos?</h3>
+      <p>
+        Final delivery usually takes <strong>2–4 weeks</strong>,
+        depending on the package and workload.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How will I receive my final photos and videos?</h3>
+      <p>
+        All final content is delivered digitally via Google Drive or private link.
+      </p>
+    </div>
+
+    <!-- RAW FOOTAGE -->
+    <div class="faq-item">
+      <h3>Do you provide raw photos or raw video footage?</h3>
+      <p>
+        Raw footage is available on request and may be chargeable
+        depending on your selected package.
+      </p>
+    </div>
+
+    <!-- PAYMENT -->
+    <div class="faq-item">
+      <h3>What payment methods do you accept?</h3>
+      <p>
+        We accept UPI, bank transfer, and cash payments.
+        Full payment details are shared during booking confirmation.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is advance payment required?</h3>
+      <p>
+        Yes, an advance payment is required to confirm your booking date.
+      </p>
+    </div>
+
+    <!-- EDITING -->
+    <div class="faq-item">
+      <h3>Can I request changes in editing?</h3>
+      <p>
+        Minor revisions are allowed. Major re-edits may involve additional charges.
+      </p>
+    </div>
+
+    <!-- REELS -->
+    <div class="faq-item">
+      <h3>Do you create Instagram reels and short videos?</h3>
+      <p>
+        Yes, trending reels and short cinematic videos are available
+        as part of selected packages.
+      </p>
+    </div>
+
+    <!-- COMMERCIAL -->
+    <div class="faq-item">
+      <h3>Do you take commercial or brand shoots?</h3>
+      <p>
+        Yes, we handle professional ads, brand films,
+        and promotional videos.
+        Contact us via the <a href="contact.html">Contact Page</a>.
+      </p>
+    </div>
+
+    <!-- TRAVEL -->
+    <div class="faq-item">
+      <h3>Do you travel for destination weddings?</h3>
+      <p>
+        Yes, travel and stay costs are discussed separately
+        depending on the location.
+      </p>
+    </div>
+
+    <!-- SUPPORT -->
+    <div class="faq-item">
+      <h3>How can I contact support?</h3>
+      <p>
+        You can reach us through the
+        <a href="contact.html">Contact Us</a> page or WhatsApp.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <!-- Newsletter -->
+    <div class="footer-newsletter">
+      <h3>Don't Miss Out</h3>
+      <p>Sign up for the latest wedding news, packages, and offers</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter Your Email Address" required>
+        <input type="date" placeholder="Birthday">
+        <button type="submit">SIGN UP</button>
+      </form>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-links">
+      <div class="link-column">
+        <h4>Vendor Portal</Portal></h4>
+        <ul>
+          <li><a href="/vendor-registration/index.html">Vendor Registation</a></li>
+          <li><a href="/vendor-registration/vendor-login.html">Vendor Login </a></li>
+        </ul>
+      </div>
+
+      <div class="link-column">
+        <h4>Customer Service</h4>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="profile.html">My Account</a></li>
+          <!-- <li><a href="storelocator.html">Store Locator</a></li>
+          <li><a href="redeem.html">Redeem rewards</a></li> -->
+        </ul>
+      </div>
+
+      <div class="link-column">
+        <h4>More to Explore</h4>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="payment-policy.html">Payments Policy</a></li>
+          <li><a href="service-agreement.html">Service Agreements </a></li>
+           <li><a href="faqs.html"> FAQs </a></li>
+            <li><a href="terms&condition-policy.html"> Terms & Conditions </a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Social Icons -->
+  <div class="footer-social">
+    <a href="https://www.instagram.com/officialimperialshots" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/share/1GXkXvt9BU/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+  </div>
+
+  <!-- Partners & Payment -->
+  <div class="footer-partners">
+    <h4>Our Partners</h4>
+    <div class="partners-logos">
+      <img src="partner1.png" alt="Partner1">
+      <img src="partner2.png" alt="Partner2">
+      <img src="partner3.png" alt="Partner3">
+    </div>
+  </div>
+
+  <div class="footer-payments">
+    <h4>Payments Accepted</h4>
+    <div class="payment-icons">
+      <img src="visa.jfif" alt="Visa">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+      <img src="rupay.png" alt="RuPay">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/UPI-Logo.png" alt="UPI">
+      <img src="paytm.png" alt="Paytm">
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div class="footer-map">
+    <img src="rajasthan1.jpg" alt="India Map with Rajasthan Highlight">
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <p>© 2026 Imperial Shots. All Rights Reserved.</p>
+  </div>
+</footer>
+<!-- SEARCH SCRIPT -->
+<script>
+function searchFAQ() {
+  const input = document.getElementById("faqSearch").value.toLowerCase();
+  const items = document.querySelectorAll(".faq-item");
+
+  items.forEach(item => {
+    const text = item.innerText.toLowerCase();
+    item.style.display = text.includes(input) ? "block" : "none";
+  });
+}
+</script>
+<script src="offline.js"></script>
+<script>
+
+let savedTheme=localStorage.getItem("theme")
+
+if(savedTheme){
+
+document.body.setAttribute("data-theme",savedTheme)
+
+}
+
+</script>
+<script src="site-settings.js"></script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</body>
+</html>

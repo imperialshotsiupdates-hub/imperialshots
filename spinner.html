@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ImperialShots Rewards</title>
+<style>
+body{
+  font-family:Poppins,sans-serif;margin:0;padding:0;
+  background:#0f0f0f;color:#fff;
+  display:flex;justify-content:center;align-items:flex-start;
+  min-height:100vh;padding:20px;
+}
+.container{
+  width:100%;max-width:720px;
+  background:#1b1b1b;border-radius:16px;padding:25px;
+  box-shadow:0 0 25px rgba(0,0,0,0.7);
+}
+.wallet-container{
+  display:flex;justify-content:center;align-items:center;margin-bottom:15px;
+}
+.wallet{
+  font-size:24px;color:#00ff90;font-weight:700;
+  transition: all 0.5s ease;margin-right:12px;
+}
+.eye-btn{
+  background:none;border:none;color:#fff;font-size:18px;cursor:pointer;
+}
+input{
+  width:100%;padding:12px;margin:8px 0;border-radius:8px;border:none;
+  background:#222;color:#fff;font-size:16px;
+}
+button{
+  padding:12px 25px;border:none;border-radius:8px;background:#2979ff;
+  color:#fff;cursor:pointer;font-size:16px;transition:0.3s;
+}
+button:hover{transform:scale(1.05);box-shadow:0 0 12px #2979ff;}
+#spinSection{margin-top:20px;}
+#wheel{
+  width:250px;height:250px;margin:auto;
+  border:12px solid #444;border-radius:50%;
+  background:conic-gradient(
+    #ff1744 0 45deg,#ff9100 45deg 90deg,
+    #00e676 90deg 135deg,#00b0ff 135deg 180deg,
+    #d500f9 180deg 225deg,#ffd600 225deg 270deg,
+    #00c853 270deg 315deg,#651fff 315deg 360deg
+  );
+  box-shadow:0 0 15px rgba(0,0,0,0.7);
+  transition: transform 4s cubic-bezier(.17,.67,.83,.67);
+}
+.pointer{
+  width:0;height:0;
+  border-left:18px solid transparent;
+  border-right:18px solid transparent;
+  border-bottom:30px solid #fff;
+  margin:auto;margin-bottom:-15px;
+  filter:drop-shadow(0 0 3px #fff);
+}
+#couponList{margin-top:20px;}
+.coupon{
+  display:flex;align-items:center;justify-content:space-between;
+  background:#232323;padding:16px;margin:10px 0;border-radius:12px;
+  transition:0.3s;
+}
+.coupon:hover{transform:scale(1.02);box-shadow:0 0 10px #00ff90;}
+.coupon img{height:40px;width:40px;border-radius:8px;margin-right:12px;}
+.pop{position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.85);display:none;
+  align-items:center;justify-content:center;z-index:9999;
+}
+.popbox{
+  background:#111;padding:30px;border-radius:16px;text-align:center;
+  width:90%;max-width:400px;position:relative;
+  animation:fadeIn 0.4s ease forwards;
+}
+@keyframes fadeIn{from{opacity:0;transform:scale(0.9);}to{opacity:1;transform:scale(1);}}
+.popbox.shake{animation:shake 0.3s;}
+@keyframes shake{
+  0%{transform:translateX(0);}
+  25%{transform:translateX(-8px);}
+  50%{transform:translateX(8px);}
+  75%{transform:translateX(-8px);}
+  100%{transform:translateX(0);}
+}
+.popbox input{margin-top:15px;padding:10px;width:80%;border-radius:6px;border:none;background:#222;color:#fff;font-size:16px;}
+.popbox button{margin-top:15px;margin-left:10px;}
+.login-section{
+  text-align:center;
+  margin-bottom:20px;
+}
+.login-section input{
+  display:block;
+  margin:auto;
+  margin-bottom:10px;
+}
+</style>
+</head>
+<body>
+
+<div class="container" id="loginContainer">
+<h2>Login / Sign-Up</h2>
+<div class="login-section">
+<input type="email" id="loginEmail" placeholder="Enter your Email"/>
+<input type="password" id="loginPIN" placeholder="Enter 4-digit PIN"/>
+<button id="loginBtn">Login / Create Account</button>
+</div>
+</div>
+
+<div class="container" id="mainContent" style="display:none;">
+<h2>🎁 ImperialShots Rewards</h2>
+
+<div class="wallet-container">
+<div id="walletDisplay" class="wallet">Points: --</div>
+<button class="eye-btn" id="toggleWallet">👁️</button>
+</div>
+
+<div id="pinSetup">
+<h3>Secure Your Wallet</h3>
+<input id="pinInput" maxlength="4" placeholder="Enter 4-digit PIN"/>
+<button onclick="setupPIN()">Save PIN</button>
+</div>
+
+<div id="spinSection" style="display:none;">
+<h3>🔄 Spin The Wheel</h3>
+<div class="pointer"></div>
+<div id="wheel"></div>
+<button onclick="doSpin()">Spin Now</button>
+<p id="spinInfo"></p>
+</div>
+
+<div id="couponSection">
+<h3>🎟️ Unlock Coupons</h3>
+<div id="couponList"></div>
+</div>
+</div>
+
+<div id="popup" class="pop">
+<div class="popbox" id="popbox">
+<p id="popText"></p>
+<input type="password" id="pinConfirm" placeholder="Enter Wallet PIN"/>
+<button id="popConfirm">Confirm</button>
+<button onclick="closePop()">Cancel</button>
+</div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getDatabase, ref, get, update, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+// ===== FIREBASE CONFIG =====
+const firebaseConfig = {
+  apiKey:"AIzaSyAvfmCKZQGxWdNUyqySV5IPk8DiFU4F23U",
+  databaseURL:"https://imperialshots-d468c-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId:"imperialshots-d468c",
+  authDomain:"imperialshots-d468c.firebaseapp.com"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+let userID = null;
+let userData = null;
+
+const popup = document.getElementById("popup");
+const popbox = document.getElementById("popbox");
+const popConfirm = document.getElementById("popConfirm");
+
+// ===== POPUP FUNCTION =====
+const showPopup = (txt,val=0,codeData=null)=>{
+  document.getElementById("popText").innerText=txt;
+  popup.style.display="flex";
+
+  const pinInput = document.getElementById("pinConfirm");
+
+  if(val>0 && codeData){
+    pinInput.value="";
+    pinInput.style.display="block";
+
+    popConfirm.onclick = async ()=>{
+      const pin = pinInput.value;
+      userData = (await get(ref(db,"users/"+userID))).val();
+
+      if(pin!==userData.pin){
+        popbox.classList.add("shake");
+        setTimeout(()=>popbox.classList.remove("shake"),300);
+        return;
+      }
+
+      if(userData.points<val){
+        showPopup("Insufficient points!");
+        return;
+      }
+
+      await update(ref(db,"users/"+userID),{points:userData.points-val});
+
+      let coupons = JSON.parse(localStorage.getItem("myCoupons")||"[]");
+      coupons.push({code:codeData.code,value:val,expiry:codeData.end});
+      localStorage.setItem("myCoupons",JSON.stringify(coupons));
+
+      document.getElementById("popText").innerHTML=`
+        🎉 Coupon Unlocked!<br>
+        Code: <b>${codeData.code}</b><br>
+        Value: <b>P${val}</b><br>
+        Valid Till: <b>${new Date(codeData.end).toLocaleDateString()}</b>
+      `;
+
+      pinInput.style.display="none";
+      popConfirm.onclick=closePop;
+
+      updateUI();
+    }
+
+  } else {
+    pinInput.style.display="none";
+    popConfirm.onclick=closePop;
+  }
+};
+
+const closePop = ()=>{popup.style.display="none";};
+
+// ===== WALLET EYE TOGGLE =====
+document.getElementById("toggleWallet").onclick=()=>{
+  const w = document.getElementById("walletDisplay");
+
+  if(w.innerText.includes("***")){
+    w.innerText="Points: "+userData.points;
+  } else {
+    w.innerText="Points: ***";
+  }
+};
+
+// ===== LOGIN =====
+document.getElementById("loginBtn").onclick=async()=>{
+  const email = document.getElementById("loginEmail").value.trim();
+  const pin = document.getElementById("loginPIN").value.trim();
+
+  if(!email || pin.length!==4){
+    alert("Enter valid email and 4-digit PIN");
+    return;
+  }
+
+  userID = btoa(email);
+  localStorage.setItem("userID",userID);
+
+  const snap = await get(ref(db,"users/"+userID));
+
+  if(!snap.exists()){
+    await set(ref(db,"users/"+userID),{
+      email,
+      pin,
+      points:0,
+      lastSpin:0,
+      unlockedCoupons:[]
+    });
+  }
+
+  userData = (await get(ref(db,"users/"+userID))).val();
+
+  document.getElementById("loginContainer").style.display="none";
+  document.getElementById("mainContent").style.display="block";
+
+  updateUI();
+};
+
+// ===== UPDATE UI =====
+const updateUI = async ()=>{
+  userData = (await get(ref(db,"users/"+userID))).val();
+
+  document.getElementById("walletDisplay").innerText="Points: "+userData.points;
+
+  if(userData.pin.length===4){
+    document.getElementById("pinSetup").style.display="none";
+    document.getElementById("spinSection").style.display="block";
+  }
+
+  loadCoupons();
+};
+
+// ===== SPIN REWARD LOGIC =====
+function getSpinResult(){
+
+  const r = Math.random()*100;
+
+  if(r < 50){
+    return {type:"love",text:"❤️ You get our love!"};
+  }
+
+  if(r < 80){
+    const arr=[25,50,75,100];
+    const p=arr[Math.floor(Math.random()*arr.length)];
+    return {type:"points",points:p};
+  }
+
+  const arr=[125,150,175,200];
+  const p=arr[Math.floor(Math.random()*arr.length)];
+  return {type:"points",points:p};
+
+}
+
+// ===== SPIN WHEEL =====
+window.doSpin = async ()=>{
+
+  const now = Date.now();
+  userData = (await get(ref(db,"users/"+userID))).val();
+
+  if(now - userData.lastSpin < 24*60*60*1000){
+    if(userData.points<50){
+      showPopup("Not enough points for early spin");
+      return;
+    }
+    await update(ref(db,"users/"+userID),{points:userData.points-50});
+  }
+
+  const result = getSpinResult();
+
+  const idx = Math.floor(Math.random()*8);
+  const deg = 3600 + idx*(360/8) + 30;
+
+  document.getElementById("wheel").style.transform="rotate("+deg+"deg)";
+
+  setTimeout(async ()=>{
+
+    userData = (await get(ref(db,"users/"+userID))).val();
+
+    if(result.type==="love"){
+      showPopup(result.text);
+    } else {
+      await update(ref(db,"users/"+userID),{
+        points:userData.points + result.points,
+        lastSpin:Date.now()
+      });
+      showPopup("🎉 You won "+result.points+" points!");
+    }
+
+    updateUI();
+
+  },4000);
+
+};
+
+// ===== LOAD COUPONS =====
+const loadCoupons = async ()=>{
+
+  const snap = await get(ref(db,"coupons"));
+  const list = document.getElementById("couponList");
+
+  list.innerHTML="";
+
+  const now = Date.now();
+  const unlocked = userData.unlockedCoupons || [];
+
+  snap.forEach(s=>{
+
+    const val = s.val().value;
+    const code = s.key;
+    const end = s.val().end;
+    const active = s.val().active;
+
+    if(!active || end < now || unlocked.includes(code)) return;
+
+    const couponDiv = document.createElement("div");
+
+    couponDiv.classList.add("coupon");
+
+    couponDiv.innerHTML=`
+      <img src="https://i.ibb.co/k9V4t7b/imperialshots-logo.png"/>
+      <div>P${val}</div>
+      <button>Unlock</button>
+    `;
+
+    couponDiv.querySelector("button").onclick =
+      ()=>showPopup("Enter PIN to unlock",val,{code,end});
+
+    list.appendChild(couponDiv);
+
+  });
+
+};
+
+</script>
+</body>
+</html>

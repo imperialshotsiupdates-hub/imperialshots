@@ -1,0 +1,117 @@
+/* COOKIE BANNER */
+
+.cookie-banner{
+position:fixed;
+bottom:-120px;
+left:50%;
+transform:translateX(-50%);
+width:92%;
+max-width:900px;
+background:rgba(17,17,17,0.95);
+color:#fff;
+padding:16px 18px;
+border-radius:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+z-index:9999;
+font-family:Poppins;
+box-shadow:0 8px 25px rgba(0,0,0,0.4);
+backdrop-filter:blur(8px);
+
+/* animation */
+animation:cookieSlide 0.8s ease forwards;
+}
+
+@keyframes cookieSlide{
+0%{
+bottom:-120px;
+opacity:0;
+}
+100%{
+bottom:20px;
+opacity:1;
+}
+}
+
+/* text */
+.cookie-banner p{
+margin:0;
+font-size:14px;
+line-height:1.4;
+max-width:65%;
+}
+
+.cookie-banner a{
+color:#ffcc00;
+text-decoration:none;
+font-weight:500;
+}
+
+/* buttons */
+.cookie-buttons{
+display:flex;
+gap:10px;
+}
+
+.cookie-buttons button{
+padding:8px 16px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-size:13px;
+font-weight:500;
+transition:all 0.3s ease;
+}
+
+/* allow button */
+.allow{
+background:#00c853;
+color:white;
+}
+
+.allow:hover{
+background:#00a844;
+transform:translateY(-2px);
+}
+
+/* deny button */
+.deny{
+background:#ff4444;
+color:white;
+}
+
+.deny:hover{
+background:#e63737;
+transform:translateY(-2px);
+}
+
+/* 📱 MOBILE RESPONSIVE */
+
+@media(max-width:600px){
+
+.cookie-banner{
+flex-direction:column;
+align-items:flex-start;
+gap:12px;
+padding:14px;
+}
+
+.cookie-banner p{
+max-width:100%;
+font-size:13px;
+}
+
+.cookie-buttons{
+width:100%;
+justify-content:flex-end;
+}
+
+.cookie-buttons button{
+flex:1;
+padding:9px;
+font-size:13px;
+}
+
+}

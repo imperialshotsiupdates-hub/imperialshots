@@ -1,0 +1,468 @@
+/* ================= RESET ================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(180deg,#0b0b0b,#161616);
+  color:#fff;
+  min-height:100vh;
+}
+
+
+/* ================= MAIN WRAPPER ================= */
+
+.profile-wrapper{
+  max-width:1200px;
+  margin:auto;
+  padding:50px 5%;
+}
+
+
+/* ================= HEADER ================= */
+
+.profile-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:45px;
+}
+
+.profile-header h1{
+  font-size:26px;
+  font-weight:600;
+  color:#d4af37;
+  letter-spacing:1px;
+}
+
+#logoutBtn{
+  background:#1f1f1f;
+  border:1px solid #333;
+  color:#fff;
+  padding:10px 24px;
+  border-radius:25px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+#logoutBtn:hover{
+  background:#d4af37;
+  color:#000;
+}
+
+
+/* ================= PROFILE CARD ================= */
+
+.profile-card{
+  background:#111;
+  border-radius:20px;
+  display:grid;
+  grid-template-columns:320px 1fr;
+  overflow:hidden;
+  box-shadow:0 25px 60px rgba(0,0,0,.7);
+}
+
+
+/* ================= LEFT ================= */
+
+.profile-left{
+  background:linear-gradient(135deg,#1b1b1b,#050505);
+  padding:45px 30px;
+  text-align:center;
+  border-right:1px solid rgba(255,255,255,.05);
+}
+
+.profile-left img{
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid #d4af37;
+  margin-bottom:15px;
+}
+
+.profile-left h2{
+  font-size:19px;
+  font-weight:500;
+  margin-bottom:6px;
+}
+
+.profile-left span{
+  font-size:13px;
+  color:#aaa;
+}
+
+
+/* ================= RIGHT ================= */
+
+.profile-right{
+  padding:45px;
+}
+
+.profile-right h3{
+  font-size:20px;
+  margin-bottom:28px;
+  font-weight:500;
+  color:#d4af37;
+}
+
+
+/* ================= INFO GRID ================= */
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:22px;
+}
+
+.info-box{
+  background:#1b1b1b;
+  padding:20px 18px;
+  border-radius:14px;
+  border:1px solid rgba(212,175,55,.18);
+  transition:0.3s;
+}
+
+.info-box:hover{
+  border-color:#d4af37;
+  transform:translateY(-2px);
+}
+
+.info-box label{
+  font-size:12px;
+  color:#aaa;
+}
+
+.info-box p{
+  margin-top:6px;
+  font-size:15px;
+  font-weight:500;
+}
+
+
+/* ================= ACTION BUTTONS ================= */
+
+.profile-actions{
+  margin-top:45px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+}
+
+.gold-btn{
+  background:linear-gradient(135deg,#d4af37,#b8962e);
+  color:#000;
+  padding:13px 28px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:500;
+  transition:0.3s;
+}
+
+.gold-btn:hover{
+  opacity:0.9;
+  transform:translateY(-2px);
+}
+
+.dark-btn{
+  background:#1f1f1f;
+  color:#fff;
+  padding:13px 28px;
+  border-radius:30px;
+  text-decoration:none;
+  border:1px solid #333;
+  transition:0.3s;
+}
+
+.dark-btn:hover{
+  background:#2a2a2a;
+}
+
+
+/* ================= QUOTES ================= */
+
+.quotes-section{
+  margin-top:45px;
+}
+
+.quotes-section h3{
+  margin-bottom:18px;
+  font-size:19px;
+}
+
+.quote-card{
+  background:#181818;
+  padding:18px 20px;
+  border-radius:14px;
+  border:1px solid #222;
+  margin-bottom:15px;
+  transition:0.3s;
+}
+
+.quote-card:hover{
+  border-color:#d4af37;
+  transform:translateY(-2px);
+}
+
+.quote-card p{
+  margin:4px 0;
+  font-size:14px;
+  color:#bbb;
+}
+
+.quote-card .status{
+  color:#d4af37;
+  font-weight:500;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+  .profile-card{
+    grid-template-columns:1fr;
+  }
+
+  .profile-left{
+    border-right:none;
+    border-bottom:1px solid rgba(255,255,255,.05);
+  }
+
+  .profile-right{
+    padding:30px;
+  }
+
+  .profile-header h1{
+    font-size:22px;
+  }
+
+  .profile-actions{
+    justify-content:center;
+  }
+
+}
+
+
+
+
+
+
+/* ================= MOBILE APP STYLE ================= */
+@media (max-width: 600px){
+
+  body{
+    background:#0b0b0b;
+  }
+
+  .profile-wrapper{
+    padding:25px 15px 90px;
+  }
+
+
+  /* HEADER */
+  .profile-header{
+    flex-direction:row;
+    align-items:center;
+    margin-bottom:25px;
+  }
+
+  .profile-header h1{
+    font-size:20px;
+  }
+
+  #logoutBtn{
+    padding:7px 16px;
+    font-size:13px;
+  }
+
+
+  /* CARD */
+  .profile-card{
+    border-radius:16px;
+    box-shadow:none;
+    background:#0f0f0f;
+  }
+
+
+  /* LEFT */
+  .profile-left{
+    padding:30px 15px;
+  }
+
+  .profile-left img{
+    width:95px;
+    height:95px;
+  }
+
+  .profile-left h2{
+    font-size:16px;
+  }
+
+  .profile-left span{
+    font-size:12px;
+  }
+
+
+  /* RIGHT */
+  .profile-right{
+    padding:22px 18px;
+  }
+
+  .profile-right h3{
+    font-size:17px;
+    margin-bottom:18px;
+  }
+
+
+  /* INFO */
+  .info-grid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .info-box{
+    padding:14px 15px;
+    border-radius:12px;
+  }
+
+  .info-box p{
+    font-size:14px;
+  }
+
+
+  /* BUTTONS */
+  .profile-actions{
+    margin-top:28px;
+    gap:12px;
+  }
+
+  .gold-btn,
+  .dark-btn{
+    width:100%;
+    text-align:center;
+    padding:12px;
+    font-size:14px;
+  }
+
+
+  /* QUOTES */
+  .quotes-section{
+    margin-top:35px;
+  }
+
+  .quotes-section h3{
+    font-size:16px;
+  }
+
+  .quote-card{
+    padding:14px;
+  }
+
+  .quote-card p{
+    font-size:13px;
+  }
+
+
+  /* BOTTOM NAV SAFE */
+  .app-bottom{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:#0b0b0b;
+    border-top:1px solid #222;
+    z-index:999;
+  }
+
+}
+
+
+/* DARK THEME */
+
+body[data-theme="dark"]{
+background:#111;
+color:#fff;
+}
+
+body[data-theme="dark"] button,
+body[data-theme="dark"] .btn{
+background:#333;
+color:#fff;
+}
+
+body[data-theme="dark"] button:hover{
+background:#555;
+}
+
+
+/* PINK THEME */
+
+body[data-theme="pink"]{
+background:#fff0f6;
+}
+
+body[data-theme="pink"] button,
+body[data-theme="pink"] .btn{
+background:#ff2d8d;
+color:#fff;
+}
+
+body[data-theme="pink"] button:hover{
+background:#e02178;
+}
+
+
+/* BLUE THEME */
+
+body[data-theme="blue"]{
+background:#f0f6ff;
+}
+
+body[data-theme="blue"] button,
+body[data-theme="blue"] .btn{
+background:#2979ff;
+color:#fff;
+}
+
+body[data-theme="blue"] button:hover{
+background:#1c5ed6;
+}
+
+
+/* ORANGE THEME */
+
+body[data-theme="orange"]{
+background:#fff6ef;
+}
+
+body[data-theme="orange"] button,
+body[data-theme="orange"] .btn{
+background:#ff7a00;
+color:#fff;
+}
+
+body[data-theme="orange"] button:hover{
+background:#e56d00;
+}
+
+
+/* YELLOW THEME */
+
+body[data-theme="yellow"]{
+background:#fffdf4;
+}
+
+body[data-theme="yellow"] button,
+body[data-theme="yellow"] .btn{
+background:#d4af37;
+color:#fff;
+}
+
+body[data-theme="yellow"] button:hover{
+background:#b9972d;
+}

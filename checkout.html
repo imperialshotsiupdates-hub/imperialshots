@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout | Imperial Shots</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="checkout.css">
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="nav">
+    <div class="logo">
+      <img src="original.png" alt="Logo">
+    </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="checkout-hero">
+  <div class="checkout-content">
+
+    <h1>Secure Checkout</h1>
+    <p>Complete your booking with 20% advance payment</p>
+
+    <div class="checkout-card">
+
+      <div class="row">
+        <span>Package</span>
+        <strong id="coPackage"></strong>
+      </div>
+
+      <div class="row">
+        <span>Total Amount</span>
+        <strong>₹<span id="coTotal"></span></strong>
+      </div>
+
+      <!-- Coupon Field -->
+      <div class="coupon-row">
+  <input type="text" id="couponInput" placeholder="Enter Coupon Code">
+  <button id="applyCouponBtn">Apply</button>
+</div>
+<p id="couponMessage" style="color:#FFD700; margin-top:5px;"></p>
+
+
+      <div class="row highlight">
+        <span>Advance (20%)</span>
+        <strong>₹<span id="coAdvance"></span></strong>
+      </div>
+
+      <button id="payBtn" class="pay-btn">Pay Advance</button>
+
+      <p id="couponMsg" style="margin-top:10px;color:green;font-weight:500;"></p>
+
+    </div>
+
+  </div>
+</section>
+
+<script type="module" src="checkout.js"></script>
+<script src="offline.js"></script>
+<<script>
+
+let savedTheme=localStorage.getItem("theme")
+
+if(savedTheme){
+
+document.body.setAttribute("data-theme",savedTheme)
+
+}
+
+</script>
+<script src="site-settings.js"></script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</script>
+<!-- Payment Popup -->
+<!-- Tumhara popup HTML -->
+<div id="paymentPopup" class="payment-popup">
+  <div class="popup-box">
+    <div id="popupIcon" class="popup-icon"></div>
+    <h2 id="popupTitle"></h2>
+    <p id="popupText"></p>
+    <button onclick="closePopup()" class="popup-btn">OK</button>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+
+function showPaymentPopup(type){
+
+let popup = document.getElementById("paymentPopup");
+let icon = document.getElementById("popupIcon");
+let title = document.getElementById("popupTitle");
+let text = document.getElementById("popupText");
+
+popup.style.display = "flex";
+
+if(type === "success"){
+
+icon.innerHTML = "✔";
+icon.className = "popup-icon popup-success";
+
+title.innerText = "Payment Successful";
+text.innerText = "Your advance payment has been completed successfully.";
+
+}else{
+
+icon.innerHTML = "✖";
+icon.className = "popup-icon popup-fail";
+
+title.innerText = "Payment Failed";
+text.innerText = "Something went wrong. Please try again.";
+
+}
+
+}
+
+function closePopup(){
+document.getElementById("paymentPopup").style.display="none";
+window.location.href = "mybookings.html";
+}
+
+</script>
+</body>
+</html>

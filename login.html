@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | Imperial Shots</title>
+
+  <link rel="stylesheet" href="login.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- 🔐 LOGIN / SIGNUP -->
+<div class="login-wrapper" id="authSection">
+
+  <div class="login-left">
+    <img src="original.png">
+    <h2>Imperial Shots</h2>
+    <p>Cinematic Wedding Experiences</p>
+  </div>
+
+  <div class="login-right">
+    <h1>Welcome to <span>Imperial Shots</span></h1>
+
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Email Address" required>
+      <input type="password" id="loginPassword" placeholder="Password" required>
+
+      <button type="submit">Login</button>
+      <button type="button" id="googleLogin">
+        <img src="google logo.png" alt="Google logo">
+        Sign in with Google
+      </button>
+    </form>
+
+    <p>
+      <a href="#" id="openSignup">Sign Up</a> |
+      <a href="#" id="forgotOpen">Forgot Password?</a>
+    </p>
+<button id="skipBtn" type="button">Skip for now</button>
+
+
+  </div>
+</div>
+
+<!-- SIGNUP MODAL -->
+<div id="signupModal" class="forgot-modal">
+  <div class="forgot-modal-content">
+    <span id="closeSignup">&times;</span>
+    <input id="signupName" placeholder="Full Name">
+    <h2>Create Account</h2>
+    <form id="signupForm">
+      <input type="email" id="signupEmail" placeholder="Email" required>
+      <input type="password" id="signupPassword" placeholder="Password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+</div>
+
+<!-- FORGOT PASSWORD -->
+<div id="forgotModal" class="forgot-modal">
+  <div class="forgot-modal-content">
+    <span id="closeForgot">&times;</span>
+    <input type="email" id="forgotEmail" placeholder="Email">
+    <button id="sendReset">Send Reset</button>
+  </div>
+</div>
+
+<!-- 🔥 FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script>
+firebase.initializeApp({
+  apiKey: "AIzaSyAvfmCKZQGxWdNUyqySV5IPk8DiFU4F23U",
+  authDomain: "imperialshots-d468c.firebaseapp.com",
+  projectId: "imperialshots-d468c"
+});
+
+const auth = firebase.auth();
+const db = firebase.firestore();
+const provider = new firebase.auth.GoogleAuthProvider();
+
+// Redirect logged-in users away from login page
+auth.onAuthStateChanged(user => {
+  if (user) {
+    window.location.href = "profile.html";
+  }
+});
+
+/* LOGIN */
+loginForm.onsubmit = e => {
+  e.preventDefault();
+  auth.signInWithEmailAndPassword(
+    loginEmail.value,
+    loginPassword.value
+  ).then(() => {
+    window.location.href = "profile.html";
+  }).catch(err => alert(err.message));
+};
+
+/* SIGNUP */
+signupForm.onsubmit = e => {
+  e.preventDefault();
+  auth.createUserWithEmailAndPassword(
+    signupEmail.value,
+    signupPassword.value
+  ).then(res => {
+    return db.collection("users").doc(res.user.uid).set({
+      email: res.user.email,
+      role: "user",
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  }).then(() => {
+    window.location.href = "profile.html";
+  }).catch(err => alert(err.message));
+};
+
+/* GOOGLE LOGIN */
+googleLogin.onclick = () => {
+  auth.signInWithPopup(provider).then(res => {
+    return db.collection("users").doc(res.user.uid).set({
+      email: res.user.email,
+      role: "user"
+    }, { merge: true });
+  }).then(() => {
+    window.location.href = "profile.html";
+  }).catch(err => alert(err.message));
+};
+
+/* RESET PASSWORD */
+sendReset.onclick = () => {
+  auth.sendPasswordResetEmail(forgotEmail.value)
+    .then(() => alert("Reset Email Sent"))
+    .catch(err => alert(err.message));
+};
+
+/* MODALS */
+openSignup.onclick = () => signupModal.style.display = "flex";
+closeSignup.onclick = () => signupModal.style.display = "none";
+forgotOpen.onclick = () => forgotModal.style.display = "flex";
+closeForgot.onclick = () => forgotModal.style.display = "none";
+
+/* SKIP BUTTON */
+document.addEventListener("DOMContentLoaded", () => {
+  const skipBtn = document.getElementById("skipBtn");
+
+  if (skipBtn) {
+    skipBtn.addEventListener("click", () => {
+      window.location.href = "index.html";
+    });
+  }
+});
+
+</script>
+<script src="offline.js"></script>
+<script>
+
+let savedTheme=localStorage.getItem("theme")
+
+if(savedTheme){
+
+document.body.setAttribute("data-theme",savedTheme)
+
+}
+
+</script>
+<script src="site-settings.js"></script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</body>
+</html>

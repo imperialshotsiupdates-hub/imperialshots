@@ -1,0 +1,188 @@
+:root {
+  --gold: #d4af37;
+  --gold-dark: #b8962e;
+  --dark: #0b0b0f;
+  --dark-soft: #14141b;
+  --white: #ffffff;
+  --muted: #bcbcbc;
+  --glass: rgba(255,255,255,0.08);
+  --blur: blur(14px);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+
+body {
+  min-height:100vh;
+  background: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.6)), url("booking-bg.jpg") center/cover no-repeat;
+  color: var(--white);
+}
+
+header {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:18px 50px;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(10px);
+}
+
+header h1 { font-size:22px; font-weight:500; }
+header img { height:45px; }
+
+.container { max-width:1100px; margin:40px auto; padding:0 20px; }
+
+#backBtn {
+  background: transparent; border:1px solid var(--gold); color: var(--gold);
+  padding:10px 24px; border-radius:30px; cursor:pointer; font-weight:500; transition:0.3s; margin-bottom:30px;
+}
+#backBtn:hover { background:var(--gold); color:#000; }
+
+.tabs { display:flex; gap:15px; margin-bottom:35px; }
+.tab {
+  padding:10px 26px; border-radius:30px; cursor:pointer; background: rgba(255,255,255,0.1); color:var(--muted);
+  font-size:14px; transition:0.3s;
+}
+.tab:hover { background: rgba(255,255,255,0.18); }
+.tab.active { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color:#000; font-weight:500; }
+
+.bookings {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap:25px;
+}
+
+.booking-card {
+  background: var(--glass); backdrop-filter: var(--blur);
+  border-radius:20px; padding:22px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.55);
+  animation: fadeUp 0.6s ease;
+}
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(25px);} to {opacity:1; transform:translateY(0);} }
+
+.booking-card h3 { font-size:18px; margin-bottom:10px; }
+.booking-card p { font-size:14px; color:var(--muted); margin-bottom:6px; }
+.booking-card input[type="date"] { padding:5px; border-radius:5px; border:none; background:#222; color:#fff; }
+.booking-card button { margin-top:10px; margin-right:5px; padding:6px 12px; border:none; border-radius:5px; cursor:pointer; }
+.booking-card .update-btn { background:#3498db; color:#fff; }
+.booking-card .cancel-btn { background:#e74c3c; color:#fff; }
+
+.status {
+  display:inline-block; margin-top:12px; padding:6px 16px; border-radius:20px;
+  font-size:12px; font-weight:500; text-transform:capitalize;
+}
+.status.pending { background: rgba(255,193,7,0.2); color:#ffc107; }
+.status.completed { background: rgba(76,175,80,0.2); color:#4caf50; }
+.status.canceled { background: rgba(244,67,54,0.2); color:#f44336; }
+
+@media (max-width:768px){
+  header { padding:15px 25px; }
+  .tabs { flex-wrap:wrap; }
+  .container { margin-top:25px; }
+}
+
+/* DARK THEME */
+
+body[data-theme="dark"]{
+background:#111;
+color:#fff;
+}
+
+body[data-theme="dark"] button,
+body[data-theme="dark"] .btn{
+background:#333;
+color:#fff;
+}
+
+body[data-theme="dark"] button:hover{
+background:#555;
+}
+
+
+/* PINK THEME */
+
+body[data-theme="pink"]{
+background:#fff0f6;
+}
+
+body[data-theme="pink"] button,
+body[data-theme="pink"] .btn{
+background:#ff2d8d;
+color:#fff;
+}
+
+body[data-theme="pink"] button:hover{
+background:#e02178;
+}
+
+
+/* BLUE THEME */
+
+body[data-theme="blue"]{
+background:#f0f6ff;
+}
+
+body[data-theme="blue"] button,
+body[data-theme="blue"] .btn{
+background:#2979ff;
+color:#fff;
+}
+
+body[data-theme="blue"] button:hover{
+background:#1c5ed6;
+}
+
+
+/* ORANGE THEME */
+
+body[data-theme="orange"]{
+background:#fff6ef;
+}
+
+body[data-theme="orange"] button,
+body[data-theme="orange"] .btn{
+background:#ff7a00;
+color:#fff;
+}
+
+body[data-theme="orange"] button:hover{
+background:#e56d00;
+}
+
+
+/* YELLOW THEME */
+
+body[data-theme="yellow"]{
+background:#fffdf4;
+}
+
+body[data-theme="yellow"] button,
+body[data-theme="yellow"] .btn{
+background:#d4af37;
+color:#fff;
+}
+
+body[data-theme="yellow"] button:hover{
+background:#b9972d;
+}
+
+/* DEFAULT TEXT COLOR */
+
+body{
+color:#000;
+}
+
+/* DARK THEME TEXT */
+
+body[data-theme="dark"]{
+background:#111;
+color:#fff;
+}
+
+/* FORCE TEXT COLOR FOR ALL ELEMENTS */
+
+body[data-theme="dark"] *{
+color:#fff;
+}
+
+body:not([data-theme="dark"]) *{
+color:#000;
+}

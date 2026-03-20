@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Best Wedding Packages in Jaipur | Pre Wedding Package Price ₹13,999 | Imperial Shots</title>
+  <link href="packages.css" rel="stylesheet">
+  <link rel="stylesheet" href="sidebar-user.css"> <!-- Firebase SDK (Compat or Modular handled in JS) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link rel="stylesheet" href="paackageaapp.css" media="(max-width:768px)">
+<link href="paackageaapp.css" rel="stylesheet">
+<link rel="stylesheet" href="bottom-nav.css">
+
+
+
+<script src="sidebar-user.js"></script>
+
+<meta name="description" content="Affordable wedding videography packages in Jaipur, Sikar & Jhunjhunu. Pre wedding shoot packages starting from ₹13,999. Book cinematic wedding films with Imperial Shots.">
+<meta name="keywords" content="
+wedding packages in jaipur,
+pre wedding packages jaipur,
+wedding videography packages sikar,
+pre wedding shoot price jaipur,
+cinematic wedding packages rajasthan,
+imperial shots packages
+">
+<meta property="og:title" content="Best Wedding Packages in Jaipur – Imperial Shots">
+<meta property="og:description" content="Pre wedding & wedding videography packages starting ₹13,999 in Jaipur, Sikar & Jhunjhunu.">
+<meta property="og:image" content="https://imperialshots.in/banner1.jpeg">
+<meta property="og:url" content="https://imperialshots.in/packages.html">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Product",
+ "name": "Utsav Wedding Package",
+ "description": "Affordable wedding videography package in Jaipur",
+ "brand": {
+   "@type": "Brand",
+   "name": "Imperial Shots"
+ },
+ "offers": {
+   "@type": "Offer",
+   "priceCurrency": "INR",
+   "price": "13999",
+   "availability": "https://schema.org/InStock",
+   "url": "https://imperialshots.in/packages.html"
+ }
+}
+</script>
+</head>
+
+<body> <!-- HEADER -->
+ <header>
+  <div class="nav">
+
+    <div class="logo">
+      <img src="original.png" alt="Logo">
+    </div>
+
+ <div class="search-box">
+
+<input type="text" id="searchInput" placeholder="Search packages">
+
+<select id="cityFilter">
+<option value="">All Cities</option>
+</select>
+
+</div>
+
+</header>
+
+
+
+ <!-- ===== VERTICAL SIDEBAR ===== -->
+<div class="v-sidebar">
+
+  <!-- TOP LOGO + ICON -->
+  <div class="v-top">
+    <img src="original.png" alt="Imperial Shots" class="v-logo">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+
+  <!-- MENU -->
+  <ul class="v-menu">
+
+  <li>
+    <a href="index.html">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+  </li>
+
+  <li>
+    <a href="portfolio.html">
+      <i class="fa-solid fa-film"></i>
+      <span>Portfolio</span>
+    </a>
+  </li>
+
+  <li>
+    <a href="packages.html">
+      <i class="fa-solid fa-box-open"></i>
+      <span>Packages</span>
+    </a>
+  </li>
+
+  <!-- ✅ My Bookings -->
+   <li>
+    <a href="mybookings.html">
+      <i class="fa-solid fa-calendar-check"></i>
+      <span>My Bookings</span>
+    </a>
+  </li>
+
+  
+
+  <!-- ✅ Profile -->
+  <li>
+    <a href="profile.html">
+      <i class="fa-solid fa-user"></i>
+      <span>Profile</span>
+    </a>
+  </li>
+
+  <!-- ✅ Sign Up -->
+  <li>
+    <a href="login.html">
+      <i class="fa-solid fa-user-plus"></i>
+      <span>Sign Up</span>
+    </a>
+  </li>
+
+  <!-- ✅ Contact -->
+  <li>
+    <a href="contact.html">
+      <i class="fa-solid fa-envelope"></i>
+      <span>Contact</span>
+    </a>
+  </li>
+<li>
+    <a href="/vendor-registration/">
+      <i class="fa-solid fa-user-tie"></i>
+      <span>Vendor</span>
+    </a>
+  </li>
+</ul>
+
+
+  <!-- USER -->
+  <div class="v-user" onclick="location.href='profile.html'">
+    <div class="v-avatar" id="userAvatar">U</div>
+    <div class="v-userinfo">
+      <span class="v-name" id="sidebarName">Guest</span>
+      <span class="v-email" id="sidebarEmail">Login required</span>
+    </div>
+  </div>
+
+</div>
+
+  <section class="seo-text">
+  <h2>Wedding & Pre-Wedding Packages in Jaipur</h2>
+
+  <p class="seo-short">
+    Imperial Shots offers premium wedding videography and pre-wedding shoot packages
+    in Jaipur, Sikar and Jhunjhunu. Our cinematic films capture every emotion and
+    celebration with a creative storytelling style. Explore our affordable wedding
+    packages starting from ₹13,999 and choose the perfect plan for your special day.
+  </p>
+
+  <span class="read-more" onclick="toggleSeo()">Read More</span>
+</section>
+<div id="loader" class="loader"></div>
+
+<div id="packagesContainer" class="packages-container"></div>
+  <section class="packages" id="packagesContainer"> <!-- Packages will load dynamically from Firebase --> </section>
+  <!-- BOOKING MODAL -->
+  <div id="bookingModal" class="modal">
+  <div class="modal-box">
+    <span class="close" id="closeBooking">&times;</span>
+
+    <h2>Book Your Event</h2>
+
+    <form id="bookingForm">
+      <input type="text" id="bfname" placeholder="First Name" required>
+      <input type="text" id="blname" placeholder="Last Name">
+
+      <input type="tel" id="bphone" placeholder="Phone Number" required>
+
+      <!-- Replace single date input with start & end date -->
+<input type="date" id="bstartDate" placeholder="Start Date" required>
+<input type="date" id="bendDate" placeholder="End Date" required>
+
+
+      <input type="text" id="bpincode" placeholder="Pincode" required>
+
+      <input type="text" id="blocation" placeholder="GPS Location" readonly>
+
+      <button type="button" id="getLocation" class="btn-outline">
+        📍 Use Current Location
+      </button>
+      <input type="text" id="baddress" placeholder="Enter Full Address (House No, Area, Landmark)" required>
+
+      <input type="text" id="bcity" placeholder="Event City" required>
+
+      <input type="text" id="bpackage" placeholder="Package" readonly>
+
+      <input type="number" id="bprice" placeholder="Price" readonly>
+
+      <!-- ✅ ONLY ONE SUBMIT BUTTON -->
+      <button type="submit" id="continueBtn" class="checkout-btn">
+        Continue 
+      </button>
+    </form>
+  </div>
+</div>
+
+
+  
+  <!-- ✅ Thank You Popup -->
+<div id="thankPopup" style="
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+">
+  <div class="thank-box" style="
+    background:#fff;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    max-width:400px;
+    width:90%;
+    position:relative;
+    box-shadow:0 0 20px rgba(0,0,0,0.3);
+    animation: popIn 0.5s ease;
+  ">
+    <h2 style="color:#27ae60; margin-bottom:15px;">🎉 Booking Confirmed!</h2>
+    <p style="margin-bottom:10px; font-weight:500;">Thank you for choosing us.</p>
+    <p style="margin-bottom:15px;">Package: <b id="thankPackage"></b></p>
+    <p style="margin-bottom:15px;">Booking ID: <b id="thankID"></b></p>
+    <button id="closeThank" style="
+      padding:10px 20px;
+      border:none;
+      background:#27ae60;
+      color:#fff;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:bold;
+    ">Close</button>
+    <canvas id="confettiCanvas" style="
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      pointer-events:none;
+      border-radius:20px;
+    "></canvas>
+  </div>
+</div>
+<div class="app-bottom">
+  <a href="index.html" class="active">
+    <i class="fa fa-home"></i>Home
+  </a>
+  <a href="packages.html">
+    <i class="fa fa-box"></i>Plans
+  </a>
+  <a href="portfolio.html">
+    <i class="fa fa-film"></i>Work
+  </a>
+  <a href="more.html">
+    <i class="fa fa-ellipsis-h"></i>More
+  </a>
+</div>
+<footer class="site-footer">
+  <div class="footer-top">
+    <!-- Newsletter -->
+    <div class="footer-newsletter">
+      <h3>Don't Miss Out</h3>
+      <p>Sign up for the latest wedding news, packages, and offers</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter Your Email Address" required>
+        <input type="date" placeholder="Birthday">
+        <button type="submit">SIGN UP</button>
+      </form>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-links">
+      <div class="link-column">
+        <h4>Vendor Portal</Portal></h4>
+        <ul>
+          <li><a href="/vendor-registration/index.html">Vendor Registation</a></li>
+          <li><a href="/vendor-registration/vendor-login.html">Vendor Login </a></li>
+           <li><a href="/carrier-portel/index.html">Carrer </a></li>
+             <li><a href="/refferral/index.html">Refer&Earn</a></li>
+        </ul>
+      </div>
+
+      <div class="link-column">
+        <h4>Customer Service</h4>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="profile.html">My Account</a></li>
+          <!-- <li><a href="storelocator.html">Store Locator</a></li>
+          <li><a href="redeem.html">Redeem rewards</a></li> -->
+        </ul>
+      </div>
+
+      <div class="link-column">
+        <h4>More to Explore</h4>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="payment-policy.html">Payments Policy</a></li>
+          <li><a href="service-agreement.html">Service Agreements </a></li>
+           <li><a href="faqs.html"> FAQs </a></li>
+            <li><a href="terms&condition-policy.html"> Terms & Conditions </a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Social Icons -->
+  <div class="footer-social">
+    <a href="https://www.instagram.com/officialimperialshots" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/share/1GXkXvt9BU/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+  </div>
+
+  <!-- Partners & Payment -->
+  <div class="footer-partners">
+    <h4>Our Partners</h4>
+    <div class="partners-logos">
+      <img src="partner1.png" alt="Partner1">
+      <img src="partner2.png" alt="Partner2">
+      <img src="partner3.png" alt="Partner3">
+    </div>
+  </div>
+
+  <div class="footer-payments">
+    <h4>Payments Accepted</h4>
+    <div class="payment-icons">
+      <img src="visa.jfif" alt="Visa">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+      <img src="rupay.png" alt="RuPay">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/UPI-Logo.png" alt="UPI">
+      <img src="paytm.png" alt="Paytm">
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div class="footer-map">
+    <img src="rajasthan1.jpg" alt="India Map with Rajasthan Highlight">
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <p>© 2026 Imperial Shots. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+<!-- ===== LOAD COMMON BOTTOM NAVIGATION ===== -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("bottom-nav.html")  // bottom-nav.html aapke common nav buttons ka file
+    .then(response => response.text())
+    .then(data => {
+      // Container banake page ke end me append karenge
+      const container = document.createElement("div");
+      container.innerHTML = data;
+      document.body.appendChild(container);
+
+      // Current page highlight karna
+      const currentPage = window.location.pathname.split("/").pop();
+      const links = container.querySelectorAll("a");
+      links.forEach(link => {
+        if(link.getAttribute("href") === currentPage){
+          link.classList.add("active"); // active class add
+        }
+      });
+    })
+    .catch(err => console.error("Bottom nav load failed:", err));
+});
+</script>
+<script src="bottom-nav.js"></script>
+<script type="module" src="packages.js"></script>
+
+<!-- Premium Alert Popup -->
+<div id="customPopup" class="lux-popup">
+  <div class="lux-box">
+    <h3 id="popupTitle">Title</h3>
+    <p id="popupMessage">Message</p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+</div>
+<script type="module" src="filter.js"></script>
+<script src="offline.js"></script>
+<script>
+
+let savedTheme=localStorage.getItem("theme")
+
+if(savedTheme){
+
+document.body.setAttribute("data-theme",savedTheme)
+
+}
+
+</script>
+<script src="site-settings.js"></script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</body>
+
+</html>

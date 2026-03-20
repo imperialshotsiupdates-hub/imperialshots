@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>More</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+/* ================= GLOBAL ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+a{ text-decoration:none; color:inherit; }
+
+/* ================= HEADER ================= */
+.site-header{
+  width:100%;
+  background:#000;
+  padding:15px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+:root{
+  --gold:#d4af37;
+}
+
+/* ================= HEADER ================= */
+
+.site-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 50px;
+  background:rgba(0,0,0,0.55);
+  backdrop-filter:blur(10px);
+}
+
+.site-header img{
+  height:70px;
+  width:auto;
+}
+
+.site-header h1{
+  color:var(--gold);
+  font-size:22px;
+  font-weight:600;
+}
+
+/* ================= DESKTOP UI ================= */
+
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:linear-gradient(180deg,#0b0b0b,#161616);
+  color:#fff;
+}
+
+.more-wrapper{
+  min-height:80vh;
+  padding:60px 8%;
+}
+
+.more-card{
+  background:#111;
+  border-radius:20px;
+  padding:50px;
+  box-shadow:0 20px 50px rgba(0,0,0,.6);
+}
+
+.more-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+.more-btn{
+  background:#1c1c1c;
+  padding:22px;
+  border-radius:14px;
+  text-align:center;
+  font-size:16px;
+  border:1px solid rgba(212,175,55,.15);
+  transition:.3s;
+  cursor:pointer;
+}
+
+.more-btn i{
+  display:block;
+  font-size:22px;
+  margin-bottom:8px;
+}
+
+.more-btn:hover{
+  background:linear-gradient(135deg,#d4af37,#b8962e);
+  color:#000;
+  transform:translateY(-5px);
+}
+
+/* ================= FOOTER (DESKTOP) ================= */
+
+.site-footer{
+  background:#020617;
+  color:#94a3b8;
+  padding:70px 20px 30px;
+  font-size:14px;
+}
+
+.footer-container{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:40px;
+}
+
+.footer-box h3,
+.footer-box h4{
+  color:#fff;
+  margin-bottom:14px;
+  font-weight:500;
+}
+
+.footer-brand{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.footer-logo-img{
+  height:52px;
+  width:auto;
+  object-fit:contain;
+}
+
+.footer-box p{
+  line-height:1.7;
+  opacity:.85;
+}
+
+.footer-box ul{
+  list-style:none;
+  padding:0;
+}
+
+.footer-box ul li{
+  margin-bottom:10px;
+}
+
+.footer-box ul li a{
+  color:#94a3b8;
+  text-decoration:none;
+  transition:.3s ease;
+}
+
+.footer-box ul li a:hover{
+  color:var(--gold);
+  padding-left:4px;
+}
+
+/* SOCIAL ICONS */
+.social{
+  margin-top:18px;
+  display:flex;
+  gap:14px;
+}
+
+.social a{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:#0f172a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--gold);
+  font-size:16px;
+  transition:.35s ease;
+}
+
+.social a:hover{
+  background:var(--gold);
+  color:#0f172a;
+  transform:translateY(-3px);
+}
+
+/* BOTTOM BAR */
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.08);
+  margin-top:40px;
+  padding-top:20px;
+  text-align:center;
+  font-size:13px;
+  opacity:.75;
+}
+
+/* ================= MOBILE UI ================= */
+
+@media(max-width:768px){
+
+  body{
+    background:#fff;
+    color:#111;
+    padding-top:70px;
+    padding-bottom:70px;
+  }
+
+  .site-header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:12px 15px;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(8px);
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+    z-index:999;
+  }
+
+  .site-header h1{
+    color:#111;
+    font-size:18px;
+  }
+
+  .site-header img{
+    height:45px;
+  }
+
+  .more-wrapper{
+    padding:20px;
+  }
+
+  .more-card{
+    background:transparent;
+    padding:0;
+    box-shadow:none;
+  }
+
+  .more-grid{
+    grid-template-columns:1fr;
+    gap:15px;
+  }
+
+  .more-btn{
+    background:#f5f5f5;
+    border:none;
+    border-radius:10px;
+  }
+
+  .site-footer{
+    display:none; /* Hide footer on phone */
+  }
+
+}
+
+/* ================= BOTTOM NAVIGATION ================= */
+
+.app-bottom{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:60px;
+  background:#f5f5f5;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  box-shadow:0 -2px 5px rgba(0,0,0,0.1);
+  z-index:999;
+}
+
+.app-bottom a{
+  text-align:center;
+  font-size:12px;
+  color:#111;
+  text-decoration:none;
+}
+
+.app-bottom a i{
+  display:block;
+  font-size:20px;
+  margin-bottom:2px;
+}
+
+.app-bottom a.active{
+  color:var(--gold);
+}
+
+/* Hide Bottom Nav on Desktop */
+@media(min-width:769px){
+  .app-bottom{
+    display:none;
+  }
+}
+/* DARK THEME */
+
+body[data-theme="dark"]{
+background:#111;
+color:#fff;
+}
+
+body[data-theme="dark"] button,
+body[data-theme="dark"] .btn{
+background:#333;
+color:#fff;
+}
+
+body[data-theme="dark"] button:hover{
+background:#555;
+}
+
+
+/* PINK THEME */
+
+body[data-theme="pink"]{
+background:#fff0f6;
+}
+
+body[data-theme="pink"] button,
+body[data-theme="pink"] .btn{
+background:#ff2d8d;
+color:#fff;
+}
+
+body[data-theme="pink"] button:hover{
+background:#e02178;
+}
+
+
+/* BLUE THEME */
+
+body[data-theme="blue"]{
+background:#f0f6ff;
+}
+
+body[data-theme="blue"] button,
+body[data-theme="blue"] .btn{
+background:#2979ff;
+color:#fff;
+}
+
+body[data-theme="blue"] button:hover{
+background:#1c5ed6;
+}
+
+
+/* ORANGE THEME */
+
+body[data-theme="orange"]{
+background:#fff6ef;
+}
+
+body[data-theme="orange"] button,
+body[data-theme="orange"] .btn{
+background:#ff7a00;
+color:#fff;
+}
+
+body[data-theme="orange"] button:hover{
+background:#e56d00;
+}
+
+
+/* YELLOW THEME */
+
+body[data-theme="yellow"]{
+background:#fffdf4;
+}
+
+body[data-theme="yellow"] button,
+body[data-theme="yellow"] .btn{
+background:#d4af37;
+color:#fff;
+}
+
+body[data-theme="yellow"] button:hover{
+background:#b9972d;
+}
+
+
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <img src="original.png" alt="Logo">
+  <h1>More</h1>
+</header>
+
+<!-- MAIN -->
+<div class="more-wrapper">
+
+  <div class="more-card">
+    <div class="more-grid">
+
+      <a href="contact.html" class="more-btn">
+        <i class="fa-solid fa-phone"></i>
+        Contact Us
+      </a>
+
+      <a href="faqs.html" class="more-btn">
+        <i class="fa-solid fa-circle-question"></i>
+        FAQs
+      </a>
+
+      <a href="privacy-policy.html" class="more-btn">
+        <i class="fa-solid fa-shield-halved"></i>
+        Privacy Policy
+      </a>
+      <a href="service-agreement.html" class="more-btn">
+         <i class="fa-solid fa-file-contract"></i>
+        service-agreement
+      </a>
+
+      <a href="terms&condition-policy.html" class="more-btn">
+        <i class="fa-solid fa-file-contract"></i>
+        Terms & Conditions
+     <a href="/vendor-registration/">
+      <i class="fa-solid fa-user-tie"></i>
+      <span>Vendor</span>
+    </a>
+<a href="profile.html">
+      <i class="fa-solid fa-id-badge"></i>
+      <span>Profile</span>
+    </a>
+    <a href="settings.html">
+      <i class="fa-solid fa-circle-user"></i>
+      <span>Settings</span>
+    </a>
+
+      
+
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER (Desktop Only) -->
+ <footer class="site-footer">
+    <div class="footer-container">
+
+
+
+      <!-- BRAND -->
+      <div class="footer-box footer-brand">
+        <img src="original.png" alt="Imperial Shots Logo" class="footer-logo-img">
+
+        <p>
+          Premium wedding & pre-wedding cinematography capturing timeless
+          emotions with a cinematic touch.
+        </p>
+        <div class="social">
+          <a href="https://www.instagram.com/officialimperialshots" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/officialimperialshots" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div class="footer-box">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+          <li><a href="faqs.html">FAQs</a></li>
+          <li><a href="helpandsupport.html">Help & Support</a></li>
+           <li><a href="packageterms.html">packgeterms</a></li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="footer-box">
+        <h4>Contact Info</h4>
+        <p>📍 Sikar, Rajasthan, India</p>
+        <p>📧 imperialshots@gmail.com</p>
+        <p>📞 +91 97725 09456</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 Imperial Shots. All Rights Reserved.
+    </div>
+  </footer>
+
+
+<!-- BOTTOM NAV (Mobile Only) -->
+<div class="app-bottom">
+  <a href="index.html" class="active">
+    <i class="fa fa-home"></i>Home
+  </a>
+  <a href="packages.html">
+    <i class="fa fa-box"></i>Plans
+  </a>
+  <a href="portfolio.html">
+    <i class="fa fa-film"></i>Work
+  </a>
+  <a href="more.html">
+    <i class="fa fa-ellipsis-h"></i>More
+  </a>
+</div>
+
+<script src="offline.js"></script>
+<script>
+
+let savedTheme=localStorage.getItem("theme")
+
+if(savedTheme){
+
+document.body.setAttribute("data-theme",savedTheme)
+
+}
+
+</script>
+<script src="site-settings.js"></script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</body>
+</html>

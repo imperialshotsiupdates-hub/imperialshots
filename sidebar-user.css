@@ -1,0 +1,265 @@
+/* ================================
+   IMPERIAL SHOTS – VERTICAL SIDEBAR
+================================ */
+
+:root{
+  --sb-bg: #14141b;          /* Dark main sidebar */
+  --sb-accent: #d4af37;      /* Gold accent */
+  --sb-hover: rgba(212,175,55,0.15); /* Hover background */
+  --sb-text: #ffffff;
+  --sb-muted: #bcbcbc;
+}
+
+/* BODY OFFSET */
+body{
+  padding-left: 76px;
+  transition: padding-left 0.35s ease;
+}
+
+/* ================= SIDEBAR ================= */
+.v-sidebar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 76px;
+  height: 100vh;
+  background: var(--sb-bg);
+  color: var(--sb-text);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 9999;
+  box-shadow: 4px 0 25px rgba(0,0,0,0.45);
+  transition: width 0.35s cubic-bezier(.4,0,.2,1);
+}
+
+.v-sidebar:hover{
+  width: 240px;
+}
+
+/* ================= TOP AREA ================= */
+.v-top{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+}
+
+.v-logo{
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px var(--sb-accent));
+  transition: transform 0.35s ease;
+}
+
+.v-sidebar:hover .v-logo{
+  transform: scale(1.1);
+}
+
+/* HAMBURGER ICON */
+.v-top i{
+  font-size: 20px;
+  color: var(--sb-accent);
+  cursor: pointer;
+  animation: floatIcon 3s ease-in-out infinite;
+}
+
+@keyframes floatIcon{
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-4px); }
+}
+
+/* ================= MENU ================= */
+.v-menu{
+  list-style: none;
+  padding: 10px 0;
+}
+
+.v-menu li a{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 20px;
+  color: var(--sb-text);
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.v-menu li a:hover{
+  background: var(--sb-hover);
+  transform: translateX(4px);
+}
+
+.v-menu i{
+  font-size: 18px;
+  transition: transform 0.35s ease, color 0.35s ease;
+}
+
+.v-menu li a:hover i{
+  transform: scale(1.2) rotate(-6deg);
+  color: var(--sb-accent);
+}
+
+.v-menu span{
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.v-sidebar:hover .v-menu span{
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ================= USER INFO ================= */
+.v-user{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.v-user:hover{
+  background: rgba(212,175,55,0.15);
+}
+
+.v-avatar{
+  width: 42px;
+  height: 42px;
+  background: radial-gradient(circle at top left, #d4af37, #b8962e);
+  border-radius: 50%;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse{
+  0%{ box-shadow: 0 0 0 0 rgba(212,175,55,0.6); }
+  70%{ box-shadow: 0 0 0 12px rgba(212,175,55,0); }
+  100%{ box-shadow: 0 0 0 0 rgba(212,175,55,0); }
+}
+
+.v-userinfo{
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.v-sidebar:hover .v-userinfo{
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.v-name{
+  font-weight: 500;
+  color: var(--sb-text);
+}
+
+.v-email{
+  font-size: 12px;
+  color: var(--sb-muted);
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  body{ padding-left:0; }
+  .v-sidebar{ transform: translateX(-100%); }
+  .v-sidebar.active{ transform: translateX(0); }
+}
+
+/* DARK THEME */
+
+body[data-theme="dark"]{
+background:#111;
+color:#fff;
+}
+
+body[data-theme="dark"] button,
+body[data-theme="dark"] .btn{
+background:#333;
+color:#fff;
+}
+
+body[data-theme="dark"] button:hover{
+background:#555;
+}
+
+
+/* PINK THEME */
+
+body[data-theme="pink"]{
+background:#fff0f6;
+}
+
+body[data-theme="pink"] button,
+body[data-theme="pink"] .btn{
+background:#ff2d8d;
+color:#fff;
+}
+
+body[data-theme="pink"] button:hover{
+background:#e02178;
+}
+
+
+/* BLUE THEME */
+
+body[data-theme="blue"]{
+background:#f0f6ff;
+}
+
+body[data-theme="blue"] button,
+body[data-theme="blue"] .btn{
+background:#2979ff;
+color:#fff;
+}
+
+body[data-theme="blue"] button:hover{
+background:#1c5ed6;
+}
+
+
+/* ORANGE THEME */
+
+body[data-theme="orange"]{
+background:#fff6ef;
+}
+
+body[data-theme="orange"] button,
+body[data-theme="orange"] .btn{
+background:#ff7a00;
+color:#fff;
+}
+
+body[data-theme="orange"] button:hover{
+background:#e56d00;
+}
+
+
+/* YELLOW THEME */
+
+body[data-theme="yellow"]{
+background:#fffdf4;
+}
+
+body[data-theme="yellow"] button,
+body[data-theme="yellow"] .btn{
+background:#d4af37;
+color:#fff;
+}
+
+body[data-theme="yellow"] button:hover{
+background:#b9972d;
+}

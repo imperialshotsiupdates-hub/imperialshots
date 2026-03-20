@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment & Refund Policy - Imperial Shots</title>
+
+<style>
+
+/* ===== Reset ===== */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: Arial, sans-serif;
+  background:#fff;
+  color:#000;
+  line-height:1.6;
+}
+
+a { color:#1e40af; text-decoration: underline; }
+a:hover { text-decoration:none; color:#2563eb; }
+
+h1,h2,h3 { margin-bottom:12px; }
+p { margin-bottom:12px; }
+ul { margin-left:20px; margin-bottom:12px; }
+
+/* ===== Container ===== */
+.container {
+  max-width:900px;
+  margin:120px auto 60px auto;
+  padding:20px;
+}
+
+/* ===== Back Button ===== */
+.back-btn {
+  position: fixed;
+  top:20px;
+  left:20px;
+  background:#1e40af;
+  color:#fff;
+  border:none;
+  padding:8px 14px;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:bold;
+  z-index:100;
+}
+
+/* ===== Company Logo ===== */
+.company-logo {
+  position: fixed;
+  top:20px;
+  right:20px;
+  width:120px;
+  z-index:100;
+}
+
+/* ===== Headings ===== */
+h1 { font-size:28px; text-align:center; margin-bottom:20px; }
+h2 { font-size:22px; margin-top:20px; margin-bottom:12px; }
+
+section { margin-bottom:20px; }
+
+/* ===== Circular Stamp & Signature ===== */
+.signature-section {
+  text-align:right;
+  margin-top:60px;
+}
+
+.stamp-wrapper {
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  overflow:hidden;
+  background:#fff;
+  display:inline-block;
+}
+
+.stamp-wrapper img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.authorized-text {
+  font-weight:bold;
+  font-size:16px;
+  margin-top:10px;
+}
+
+/* ===== Footer ===== */
+footer {
+  background:#f3f4f6;
+  color:#1f2937;
+  padding:20px;
+  text-align:center;
+  font-size:14px;
+  margin-top:40px;
+}
+
+footer a { color:#1e40af; }
+
+</style>
+</head>
+
+<body>
+
+<!-- Back Button -->
+<button class="back-btn" onclick="window.history.back()">← Back</button>
+
+<!-- Company Logo -->
+<img src="original.png" alt="Company Logo" class="company-logo">
+
+<div class="container">
+
+<h1>Advance Payment, Refund, GST & Cancellation Policy</h1>
+
+<p>This document details the official <strong>advance payment, refund, GST, and cancellation policies</strong> of <strong>Imperial Shots</strong>. All clients are required to read and agree to these terms before confirming a booking.</p>
+
+<section>
+<h2>1. Advance Payment</h2>
+<ul>
+<li>An advance of 20% of the total booking amount is required to confirm your booking.</li>
+<li>Advance payments are <strong>non-refundable</strong> under normal circumstances.</li>
+<li>The remaining amount is due according to the payment schedule before the event.</li>
+<li>All payments are processed via our official online payment gateways.</li>
+</ul>
+</section>
+
+<section>
+<h2>2. Cancellation Policy</h2>
+<ul>
+<li>Once a booking is confirmed, it cannot be cancelled by the client directly.</li>
+<li>Cancellations are only considered under <strong>special circumstances</strong> and require approval from Imperial Shots admin.</li>
+<li>Clients must contact us via <a href="mailto:infoimperialshots@gmail.com">infoimperialshots@gmail.com</a> for any special cancellation request.</li>
+</ul>
+</section>
+
+<section>
+<h2>3. Refund Policy</h2>
+<ul>
+<li>If a special cancellation is approved <strong>20–25 days before the event</strong>, a refund will be processed minus a 5% penalty of the total advance.</li>
+<li>Advance payments are generally non-refundable in all other cases.</li>
+<li>Refunds, if applicable, are processed within 14 working days to the original payment method.</li>
+</ul>
+</section>
+
+<section>
+<h2>4. GST & Taxes</h2>
+<ul>
+<li>All bookings include applicable Goods and Services Tax (GST) as per Indian government regulations.</li>
+<li>The GST rate is applied on the total amount including any service charges.</li>
+<li>Invoices will be provided on request and are compliant with Indian GST law.</li>
+</ul>
+</section>
+
+<section>
+<h2>5. Liability & Government Compliance</h2>
+<ul>
+<li>Imperial Shots is not responsible for any losses due to circumstances beyond control including technical failures, natural disasters, or venue restrictions.</li>
+<li>All services comply with government regulations including copyright, drone usage, and public event permissions.</li>
+<li>Clients are responsible for providing any additional permits required for filming at specific venues.</li>
+</ul>
+</section>
+
+<section>
+<h2>6. Client Acknowledgement</h2>
+<ul>
+<li>By confirming a booking, clients acknowledge that they have read and agreed to these terms.</li>
+<li>Clients confirm understanding that advance payment is non-refundable except under special cases approved by admin.</li>
+<li>Clients agree to comply with all government rules and regulations during the event coverage.</li>
+</ul>
+</section>
+
+<!-- Signature Section -->
+<div class="signature-section">
+  <div class="stamp-wrapper">
+    <img src="official-stamp-imperialshots.jpeg" alt="Company Stamp">
+  </div>
+  <p class="authorized-text">Authorized Signature</p>
+  <p><strong>Imperial Shots</strong></p>
+</div>
+
+</div>
+
+<footer>
+<p>Authorized by <strong>Imperial Shots</strong></p>
+<p>Email: <a href="mailto:infoimperialshots@gmail.com">infoimperialshots@gmail.com</a></p>
+<p>Address: Sikar, Rajasthan, India</p>
+<p>© 2026 Imperial Shots. All rights reserved.</p>
+</footer>
+
+
+<script src="offline.js"></script>
+<script>
+
+let savedTheme=localStorage.getItem("theme")
+
+if(savedTheme){
+
+document.body.setAttribute("data-theme",savedTheme)
+
+}
+
+</script>
+<script src="site-settings.js"></script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</body>
+</html>
